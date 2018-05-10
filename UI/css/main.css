@@ -1,0 +1,61 @@
+body {
+    background-color: #F1F1F1;
+    margin: 0px;
+}
+
+.navbar {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+}
+
+nav {
+    background-color:#FFF;
+    height: 30px;
+    margin: 0px;
+    padding: 10px;
+}
+
+.form-container {
+    background-color: rgb(255, 255, 255);
+    max-width: 450px;
+    margin: 90px auto;
+    padding: 40px;
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 20px;
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(231, 231, 231);
+    border-image: initial;
+    border-radius: 5px;
+}
+
+.form-item {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-input, .form-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px;
+}
+
+.form-btn {
+    width: 105%;
+}
+.btn-action {
+    background-color: rgb(247, 96, 15);
+    background-color:#35475E;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    padding: 8px;
+}
+
+.text-center {
+    text-align: center;
+}
