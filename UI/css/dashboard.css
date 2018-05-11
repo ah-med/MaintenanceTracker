@@ -1,0 +1,73 @@
+/**** Body styles ****/
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+.navbar {
+    background-color: #35475E;
+    color: #fff;
+}
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+footer {
+    padding: 12px;
+}
+
+/**** nav styles ****/
+.navbar {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255, 0.4);
+}
+.logo {
+    padding: 16px;
+    width: 20%;
+    background-color: rgb(7, 18, 80);
+}
+.logo span{
+    font-size:20px
+}
+.menu {
+    display: none;
+}
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    width: 80%;
+    background-color: rgb(255, 255, 255, 0.4)
+}
+
+.navbar-links span {
+    padding: 10px;
+    width: 50%;
+}
+
+/**** Main styles ****/
+
+/** main-content setction **/
+.main-content {
+    width: 100%;
+}
+
+/*request styles*/
+.request {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 15px;
+    padding:15px;
+}
+
+
+
+
+
