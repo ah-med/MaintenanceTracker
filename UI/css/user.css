@@ -1,0 +1,64 @@
+.user-profile img {
+    border-radius:50%;
+}
+
+/* user requests*/
+.user-request {
+    background-color: #fff;
+    max-width:250px;
+}
+
+.tab {
+	background-color: #dfe4ec;
+	border-bottom: 1px solid #dfe4ec;
+	padding: 10px;
+    color: #617085;
+    font-size: 12px;
+}
+.content {
+    padding:px;
+}
+
+.content div {
+    border-bottom: 1px solid #eee;
+}
+.content span {
+    padding: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+    .request {
+        grid-template-columns: auto auto auto;
+    }
+} 
+
+@media only screen and (max-width: 600px) {
+    .request {
+        grid-template-columns: auto auto;
+    }
+    .user-request {
+        max-width: 100%;
+    }
+    .form-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-input, .form-btn {
+        margin:0;
+    }
+    .form-select {
+        margin: 12px 0;
+    }
+    .search .form-btn {
+        width: 100%;
+    }
+} 
+
+@media only screen and (max-width: 380px) {
+    .request {
+        grid-template-columns: auto;
+    }
+    .user-request {
+        max-width: 100%;
+    }
+} 
