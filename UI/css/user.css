@@ -1,3 +1,7 @@
+.user-profile img {
+    border-radius:50%;
+}
+
 /* user requests*/
 .user-request {
     background-color: #fff;
