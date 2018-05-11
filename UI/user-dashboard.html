@@ -15,6 +15,11 @@
 <body>
     <nav class="navbar">
         <div class="logo">
+            <div class="menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
             <span>Maintenance Tracker</span>
         </div>
         <div class="navbar-links">
@@ -28,7 +33,73 @@
     </nav>
 
     <main>
+        <section class="side-nav" align="center">
+            <nav>
+                <div class="user-profile">
+                    <img src="https://via.placeholder.com/80x80" alt="logo" />
+                    <h3>Firstname Lastname</h3>
+                </div>
+                <div class="user-action">
+                    <button class="btn-action">
+                        <i class="fa fa-plus"></i> Create Request</button>
+                    <ul>
+                        <li>
+                            <input type="checkbox">
+                            <span>Repairs</span>
+                            <span class="badge">1</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Maintenance</span>
+                            <span class="badge">4</span>
+                        </li>
+                    </ul>
+                    <h4>Status</h4>
+                    <ul>
+                        <li>
+                            <input type="checkbox">
+                            <span>Approved requests</span>
+                            <span class="badge">5</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Disapproved requests</span>
+                            <span class="badge">1</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Rejected requests</span>
+                            <span class="badge">4</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Resolved requests</span>
+                            <span class="badge">4</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Unmarked requests</span>
+                            <span class="badge">4</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+
         <section class="main-content">
+            <div class="search">
+                <form>
+                    <div class="form-item">
+                        <input class="form-input" type="text" placeholder="Filter requests">
+                        <select class="form-select">
+                            <option value="">All requests</option>
+                            <option value="">Maintenance</option>
+                            <option value="">Repairs</option>
+                        </select>
+                        <input class="form-btn btn-action" type="submit" value="search">
+                    </div>
+                </form>
+            </div>
             <div class="request">
                 <div class="user-request card">
                     <div class="tab">
