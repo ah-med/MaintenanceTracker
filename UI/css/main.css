@@ -44,6 +44,10 @@ body {
     width: 50%;
 }
 
+.navbar-links span a {
+    margin: 0 12px;
+}
+
 /* form */
 .form-container {
     background-color: rgb(255, 255, 255);
