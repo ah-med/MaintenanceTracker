@@ -11,6 +11,8 @@ body {
 
 /**** nav styles ****/
 .navbar {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
     padding: 0;
     display: flex;
     flex-direction: row;
@@ -40,6 +42,10 @@ body {
 .navbar-links span {
     padding: 10px;
     width: 50%;
+}
+
+.navbar-links span a {
+    margin: 0 12px;
 }
 
 /* form */
