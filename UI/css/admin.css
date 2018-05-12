@@ -1,0 +1,41 @@
+.request {
+    grid-template-columns: auto auto auto;
+}
+.admin-request{
+    display: grid;
+	grid-template-columns:30% 70%;
+	max-width:400px;
+    padding:10px; 
+    background-color: #fff;
+}
+.request-details div {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.request-details div span {
+    width: 50%;
+}
+.request-details .name {
+    width:100%;
+}
+.user-image img {
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 800px) {
+    .request {
+        grid-template-columns: auto auto;
+    }
+} 
+
+@media only screen and (max-width: 600px) {
+    .request {
+        grid-template-columns: auto;
+    }
+    .admin-request {
+        max-width: 100%;
+    }
+} 
+

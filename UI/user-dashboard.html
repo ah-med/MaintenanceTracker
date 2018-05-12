@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Dashboard </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./images/fav.ico">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/user.css">
+    <link rel="stylesheet" href="./css/modal.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <div class="menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <span>Maintenance Tracker</span>
+        </div>
+        <div class="navbar-links">
+            <span>
+                <a href="./index.html">Home</a>
+            </span>
+            <span align="right">
+                <a href="./user-signin.html">Logout</a>
+            </span>
+        </div>
+    </nav>
+
+    <main>
+        <section class="side-nav" align="center">
+            <nav>
+                <div class="user-profile">
+                    <input class="edit" id="imgFile" type="file" />
+                    <div id="userImg" ><img src="https://via.placeholder.com/50x50" alt="logo" /></div>
+                    <h3>Firstname Lastname</h3>
+                </div>
+                <div class="user-action">
+                    <button id="createBtn" class="btn-action">
+                        <i class="fa fa-plus"></i> Create Request</button>
+                    <ul>
+                        <li>
+                            <input type="checkbox">
+                            <span>Repairs</span>
+                            <span class="badge">1</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Maintenance</span>
+                            <span class="badge">4</span>
+                        </li>
+                    </ul>
+                    <h4>Status</h4>
+                    <ul>
+                        <li>
+                            <input type="checkbox">
+                            <span>Approved requests</span>
+                            <span class="badge">5</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Disapproved requests</span>
+                            <span class="badge">1</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Rejected requests</span>
+                            <span class="badge">4</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Resolved requests</span>
+                            <span class="badge">4</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Unmarked requests</span>
+                            <span class="badge">4</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+        <div id="requestModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="form-container card">
+                <span class="fa fa-close close"></span>
+                <form>
+                    <h3 class="text-center">Create new request</h3>
+                    <div class="form-item">
+                        <label>Request Type</label>
+                        <br>
+                        <select class=" form-input form-select" required>
+                            <option>------</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="repairs">Repair</option>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label>Your request</label>
+                        <br>
+                        <textarea class="form-input" required></textarea>
+                    </div>
+                    <div class="form-item">
+                        <input class="form-btn btn-action" type="submit" value="Create">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <section class="main-content">
+            <div class="search">
+                <form>
+                    <div class="form-item">
+                        <input class="form-input" type="text" placeholder="Filter requests">
+                        <select class="form-select">
+                            <option>All requests</option>
+                            <option value="">Maintenance</option>
+                            <option value="">Repair</option>
+                        </select>
+                        <input class="form-btn btn-action" type="submit" value="search">
+                    </div>
+                </form>
+            </div>
+            <div class="request">
+                <div class="user-request card">
+                    <div class="tab">
+                        <span>Edit</span>
+                        <span>Delete</span>
+                        <span>View Details</span>
+                    </div>
+                    <div class="content">
+                        <div>
+                            <span>Type</span>
+                            <span>Maintenance</span>
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <span>Approved</span>
+                        </div>
+                        <div>
+                            <span>Updated</span>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-request card">
+                    <div class="tab">
+                        <span>Edit</span>
+                        <span>Delete</span>
+                        <span>View Details</span>
+                    </div>
+                    <div class="content">
+                        <div>
+                            <span>Type</span>
+                            <span>Maintenance</span>
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <span>Approved</span>
+                        </div>
+                        <div>
+                            <span>Updated</span>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-request card">
+                    <div class="tab">
+                        <span>Edit</span>
+                        <span>Delete</span>
+                        <span>View Details</span>
+                    </div>
+                    <div class="content">
+                        <div>
+                            <span>Type</span>
+                            <span>Maintenance</span>
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <span>Approved</span>
+                        </div>
+                        <div>
+                            <span>Updated</span>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-request card">
+                    <div class="tab">
+                        <span>Edit</span>
+                        <span>Delete</span>
+                        <span>View Details</span>
+                    </div>
+                    <div class="content">
+                        <div>
+                            <span>Type</span>
+                            <span>Maintenance</span>
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <span>Approved</span>
+                        </div>
+                        <div>
+                            <span>Updated</span>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-request card">
+                    <div class="tab">
+                        <span>Edit</span>
+                        <span>Delete</span>
+                        <span>View Details</span>
+                    </div>
+                    <div class="content">
+                        <div>
+                            <span>Type</span>
+                            <span>Maintenance</span>
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <span>Approved</span>
+                        </div>
+                        <div>
+                            <span>Updated</span>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="text-center">
+            Maintenance Tracker &copy; 2018.
+        </div>
+    </footer>
+    <script src="js/modal.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

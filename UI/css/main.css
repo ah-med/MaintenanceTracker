@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+.edit {
+    position: absolute;
+}
+
+body {
+    background-color: #F1F1F1;
+    margin: 0px;
+}
+
+/**** nav styles ****/
+.navbar {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255, 0.4);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+}
+.user-profile {
+    position: relative;
+}
+
+.user-profile .edit {
+    display: none;
+    left: 150px;
+    background: rgb(255, 255, 255, 0.4);
+    background: 1px solid #35475E;
+}
+
+.user-profile:hover .edit{
+    display: block;
+    width: 55px;
+}
+
+.logo {
+    color:#fff;
+    padding: 16px;
+    width: 20%;
+    background-color: rgb(7, 18, 80);
+}
+.logo span{
+    font-size:20px
+}
+.menu {
+    display: none;
+}
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    width: 80%;
+    background-color: rgb(255, 255, 255, 0.4)
+}
+
+.navbar-links span {
+    padding: 10px;
+    width: 50%;
+}
+
+.navbar-links span a {
+    margin: 0 12px;
+}
+
+/* form */
+.form-container {
+    background-color: rgb(255, 255, 255);
+    max-width: 450px;
+    margin: 90px auto;
+    padding: 40px;
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 20px;
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(231, 231, 231);
+    border-image: initial;
+    border-radius: 5px;
+}
+
+.form-item {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-input, .form-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px;
+}
+
+.btn-action {
+    background-color:#35475E;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    padding: 8px;
+}
+
+.text-center {
+    text-align: center;
+}
