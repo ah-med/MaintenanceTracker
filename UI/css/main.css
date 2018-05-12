@@ -4,6 +4,10 @@
 a {
     text-decoration: none;
 }
+.edit {
+    position: absolute;
+}
+
 body {
     background-color: #F1F1F1;
     margin: 0px;
@@ -19,6 +23,22 @@ body {
     background-color: rgb(255, 255, 255, 0.4);
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
 }
+.user-profile {
+    position: relative;
+}
+
+.user-profile .edit {
+    display: none;
+    left: 150px;
+    background: rgb(255, 255, 255, 0.4);
+    background: 1px solid #35475E;
+}
+
+.user-profile:hover .edit{
+    display: block;
+    width: 55px;
+}
+
 .logo {
     color:#fff;
     padding: 16px;
