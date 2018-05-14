@@ -1,0 +1,14 @@
+{
+  "name": "maintenancetracker",
+  "version": "1.0.0",
+  "description": "create and track your maintenance/repair requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ahmed",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
