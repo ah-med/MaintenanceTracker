@@ -38,7 +38,9 @@
             <nav>
                 <div class="user-profile">
                     <input class="edit" id="imgFile" type="file" />
-                    <div id="userImg" ><img src="https://via.placeholder.com/50x50" alt="logo" /></div>
+                    <div id="userImg">
+                        <img src="images/avarter.png" alt="avarter" />
+                    </div>
                     <h3>Firstname Lastname</h3>
                 </div>
                 <div class="user-action">
@@ -62,11 +64,6 @@
                             <input type="checkbox">
                             <span>Approved requests</span>
                             <span class="badge">5</span>
-                        </li>
-                        <li>
-                            <input type="checkbox">
-                            <span>Disapproved requests</span>
-                            <span class="badge">1</span>
                         </li>
                         <li>
                             <input type="checkbox">
@@ -129,109 +126,228 @@
                 </form>
             </div>
             <div class="request">
-                <div class="user-request card">
+                <div class="user-request">
                     <div class="tab">
-                        <span>Edit</span>
-                        <span>Delete</span>
-                        <span>View Details</span>
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
                     </div>
-                    <div class="content">
+
+                    <div class="content state">
                         <div>
                             <span>Type</span>
-                            <span>Maintenance</span>
+                            <span align="center">Maintenance</span>
                         </div>
                         <div>
                             <span>Status</span>
-                            <span>Approved</span>
+                            <span align="center" class="unmarked">unmarked</span>
                         </div>
-                        <div>
-                            <span>Updated</span>
-                            <span>2 hours ago</span>
-                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="11" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                        <button class="update">Update</button>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
                     </div>
                 </div>
-                <div class="user-request card">
+                <div class="user-request">
                     <div class="tab">
-                        <span>Edit</span>
-                        <span>Delete</span>
-                        <span>View Details</span>
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
                     </div>
-                    <div class="content">
+
+                    <div class="content state">
                         <div>
                             <span>Type</span>
-                            <span>Maintenance</span>
+                            <span align="center">Maintenance</span>
                         </div>
                         <div>
                             <span>Status</span>
-                            <span>Approved</span>
+                            <span align="center" class="resolved">Resolved</span>
                         </div>
-                        <div>
-                            <span>Updated</span>
-                            <span>2 hours ago</span>
-                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="10" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                        <button class="update">Update</button>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
                     </div>
                 </div>
-                <div class="user-request card">
+                <div class="user-request">
                     <div class="tab">
-                        <span>Edit</span>
-                        <span>Delete</span>
-                        <span>View Details</span>
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
                     </div>
-                    <div class="content">
+
+                    <div class="content state">
                         <div>
                             <span>Type</span>
-                            <span>Maintenance</span>
+                            <span align="center">Maintenance</span>
                         </div>
                         <div>
                             <span>Status</span>
-                            <span>Approved</span>
+                            <span align="center" class="rejected">Rejected</span>
                         </div>
-                        <div>
-                            <span>Updated</span>
-                            <span>2 hours ago</span>
-                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="10" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                        <button class="update">Update</button>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
                     </div>
                 </div>
-                <div class="user-request card">
+                <div class="user-request">
                     <div class="tab">
-                        <span>Edit</span>
-                        <span>Delete</span>
-                        <span>View Details</span>
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
                     </div>
-                    <div class="content">
+
+                    <div class="content state">
                         <div>
                             <span>Type</span>
-                            <span>Maintenance</span>
+                            <span align="center">Maintenance</span>
                         </div>
                         <div>
                             <span>Status</span>
-                            <span>Approved</span>
+                            <span align="center" class="approved">approved</span>
                         </div>
-                        <div>
-                            <span>Updated</span>
-                            <span>2 hours ago</span>
-                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="10" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                        <button class="update">Update</button>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
                     </div>
                 </div>
-                <div class="user-request card">
+                <div class="user-request">
                     <div class="tab">
-                        <span>Edit</span>
-                        <span>Delete</span>
-                        <span>View Details</span>
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
                     </div>
-                    <div class="content">
+
+                    <div class="content state">
                         <div>
                             <span>Type</span>
-                            <span>Maintenance</span>
+                            <span align="center">Maintenance</span>
                         </div>
                         <div>
                             <span>Status</span>
-                            <span>Approved</span>
+                            <span align="center" class="unmarked">unmarked</span>
+                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="4" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                        <button class="update">Update</button>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="user-request">
+                    <div class="tab">
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
+                    </div>
+
+                    <div class="content state">
+                        <div>
+                            <span>Type</span>
+                            <span align="center">Maintenance</span>
                         </div>
                         <div>
-                            <span>Updated</span>
-                            <span>2 hours ago</span>
+                            <span>Status</span>
+                            <span align="center" class="resolved">Resolved</span>
                         </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="10" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                        <button class="update">Update</button>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="user-request">
+                    <div class="tab">
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
+                    </div>
+
+                    <div class="content state">
+                        <div>
+                            <span>Type</span>
+                            <span align="center">Maintenance</span>
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <span align="center" class="rejected">Rejected</span>
+                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="10" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                        <button class="update">Update</button>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="user-request">
+                    <div class="tab">
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
+                    </div>
+
+                    <div class="content state">
+                        <div>
+                            <span>Type</span>
+                            <span align="center">Maintenance</span>
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <span align="center" class="approved">approved</span>
+                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="10" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                        <button class="update">Update</button>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
                     </div>
                 </div>
             </div>

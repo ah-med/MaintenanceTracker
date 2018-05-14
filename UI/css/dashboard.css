@@ -21,6 +21,26 @@ footer {
     padding: 12px;
 }
 
+textarea {
+    resize: none;
+}
+
+.approved {
+    background-color: rgb(236, 236, 155);
+}
+
+.rejected {
+    background-color: rgb(236, 155, 155);
+}
+
+.unmarked {
+    background-color: #f1f1f1;
+}
+
+.resolved {
+    background-color: rgb(154, 240, 154);
+}
+
 /**** nav styles ****/
 .navbar {
     padding: 0;
@@ -128,6 +148,72 @@ ul li {
     padding:15px;
 }
 
+.user-request {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: transparent;
+    max-width: 250px;
+}
+
+.request-text {
+    display: none;
+}
+
+.tab {
+    background-color: #dfe4ec;
+    color: #617085;
+    font-size: 12px;
+}
+
+.tab button {
+    border-right: 1px solid #fff;
+    padding: 4px 12px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.active {
+    color: #fff;
+    background-color: #302d51;
+}
+
+.footer {
+    background-color: #dfe4ec;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    font-size: 10px;
+    padding: 2px 9px;
+}
+.content {
+    position: relative;
+    background: #fff;
+}
+.content-details,
+.content-details:focus {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+.content div {
+    display: flex;
+    flex-direction: row;
+    padding: 0 9px;
+    border-bottom: 1px solid #eee;
+}
+.content div span {
+    width: 50%;
+}
+.content span {
+    padding: 5px;
+}
+.content button {
+    position: absolute;
+    bottom: 4%;
+    left: 75%;
+    display: none;
+}
 
 @media screen and (max-width: 1100px) {
     .side-nav {  

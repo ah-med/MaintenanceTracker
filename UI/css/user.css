@@ -2,29 +2,6 @@
     border-radius:50%;
 }
 
-/* user requests*/
-.user-request {
-    background-color: #fff;
-    max-width:250px;
-}
-
-.tab {
-	background-color: #dfe4ec;
-	border-bottom: 1px solid #dfe4ec;
-	padding: 10px;
-    color: #617085;
-    font-size: 12px;
-}
-.content {
-    padding:px;
-}
-
-.content div {
-    border-bottom: 1px solid #eee;
-}
-.content span {
-    padding: 5px;
-}
 
 @media only screen and (max-width: 800px) {
     .request {
