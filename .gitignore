@@ -1,3 +1,17 @@
-*Thumbs.db
-*node_modules
-*build
+## Node modules
+/node_modules
+
+## Coverage
+coverage
+
+## Coveralls
+.coveralls.yml
+
+## Nyc_output
+.nyc_output
+
+## Thumbs.db
+Thumbs.db
+
+## Env variables
+.env
