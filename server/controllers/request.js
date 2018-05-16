@@ -46,8 +46,8 @@ class RequestController {
     *@returns {undefined} The return *
     */
   static getAllRequests(req, res) {
-    res.status(501).json({
-      message: 'NOT IMPLEMENTED: Fetch all requests that belongs to a logged in user GET'
+    res.status(200).json({
+      requests
     });
   }
 

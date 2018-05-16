@@ -80,9 +80,8 @@ describe('GET /users/requests', () => {
     chai.request(app)
       .get('/api/v1/users/requests')
       .end((err, res) => {
-        expect(res.body).to.have.property('message')
-          .eql('NOT IMPLEMENTED: Fetch all requests that belongs to a logged in user GET');
-        expect(res.status).to.equal(501);
+        expect(res.body).to.have.property('requests');
+        expect(res.status).to.equal(200);
         done();
       });
   });
