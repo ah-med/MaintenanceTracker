@@ -32,7 +32,8 @@ describe('POST /users/requests', () => {
           .eql({
             id: 100,
             type: 'maintenance',
-            details: 'I need to format my PC'
+            details: 'I need to format my PC',
+            status: 'Unmarked'
           });
         expect(res.body).to.have.property('location')
           .eql('localhost:8000/api/v1/users/requests/100');
@@ -69,6 +70,7 @@ describe('GET /users/requests/<requestId>', () => {
         expect(res.body.request).to.have.property('id');
         expect(res.body.request).to.have.property('type');
         expect(res.body.request).to.have.property('details');
+        expect(res.body.request).to.have.property('status');
         expect(res.status).to.equal(200);
         done();
       });
