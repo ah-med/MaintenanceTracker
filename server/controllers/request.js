@@ -31,8 +31,11 @@ class RequestController {
     *@returns {undefined} The return *
     */
   static getRequest(req, res) {
-    res.status(501).json({
-      message: 'NOT IMPLEMENTED: Fetch a request that belongs to a logged in user GET'
+    let { requestId } = req.params;
+    requestId = parseInt(requestId, 10);
+    const request = requests[requestId - 100];
+    res.status(200).json({
+      request
     });
   }
 
