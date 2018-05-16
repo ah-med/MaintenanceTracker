@@ -58,8 +58,13 @@ class RequestController {
     *@returns {undefined} The return *
     */
   static modifyRequest(req, res) {
-    res.status(501).json({
-      message: 'NOT IMPLEMENTED: Modify a Request PUT'
+    const { requestId } = req.params;
+    const { type, details } = req.body;
+    const index = parseInt(requestId, 10) - 100;
+    requests[index].type = type;
+    requests[index].details = details;
+    res.status(200).json({
+      message: 'Modified successfully'
     });
   }
 }
