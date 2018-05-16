@@ -53,8 +53,8 @@ describe('PUT /users/requests/<requestId>', () => {
       .send(request)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('NOT IMPLEMENTED: Modify a Request PUT');
-        expect(res.status).to.equal(501);
+          .eql('Modified successfully');
+        expect(res.status).to.equal(200);
         done();
       });
   });
