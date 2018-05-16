@@ -15,6 +15,7 @@ class RequestModel {
     this.id = id;
     this.type = type;
     this.details = details;
+    this.status = 'Unmarked';
   }
 }
 
