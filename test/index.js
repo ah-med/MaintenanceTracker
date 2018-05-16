@@ -65,9 +65,11 @@ describe('GET /users/requests/<requestId>', () => {
     chai.request(app)
       .get('/api/v1/users/requests/100')
       .end((err, res) => {
-        expect(res.body).to.have.property('message')
-          .eql('NOT IMPLEMENTED: Fetch a request that belongs to a logged in user GET');
-        expect(res.status).to.equal(501);
+        expect(res.body).to.have.property('request');
+        expect(res.body.request).to.have.property('id');
+        expect(res.body.request).to.have.property('type');
+        expect(res.body.request).to.have.property('details');
+        expect(res.status).to.equal(200);
         done();
       });
   });
