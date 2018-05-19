@@ -62,11 +62,6 @@
                         </li>
                         <li>
                             <input type="checkbox">
-                            <span>Disapproved requests</span>
-                            <span class="badge">1</span>
-                        </li>
-                        <li>
-                            <input type="checkbox">
                             <span>Rejected requests</span>
                             <span class="badge">4</span>
                         </li>
@@ -100,115 +95,170 @@
                 </form>
             </div>
             <div class="request">
-                <div class="card admin-request">
-                    <div class="user-image">
-                        <img src="https://via.placeholder.com/80x80" alt="logo" />
+                <div class="admin-request">
+                    <div class="tab">
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
                     </div>
-                    <div class="request-details">
-                        <div>
-                            <span class="name">Firstname Lastname</span>
-                        </div>
-                        <div>
-                            <span>Request Type</span>
-                            <span>Maintenance</span>
-                        </div>
-                        <div>
-                            <span>Set Status</span>
-                            <select>
-                                <option>Unmarked</option>
-                                <option>Approved</option>
-                                <option>Disapproved</option>
-                                <option>Rejected</option>
-                                <option>Resolved</option>
-                            </select>
-                        </div>
-                        <div>
-                            <a href="">View details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card admin-request">
-                    <div class="user-image">
-                        <img src="https://via.placeholder.com/80x80" alt="logo" />
-                    </div>
-                    <div class="request-details">
-                        <div>
-                            <span class="name">Firstname Lastname</span>
-                        </div>
-                        <div>
-                            <span>Request Type</span>
-                            <span>Maintenance</span>
-                        </div>
-                        <div>
-                            <span>Set Status</span>
-                            <select>
-                                <option>Unmarked</option>
-                                <option>Approved</option>
-                                <option>Disapproved</option>
-                                <option>Rejected</option>
-                                <option>Resolved</option>
-                            </select>
-                        </div>
-                        <div>
-                            <a href="">View details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card admin-request">
-                    <div class="user-image">
-                        <img src="https://via.placeholder.com/80x80" alt="logo" />
-                    </div>
-                    <div class="request-details">
-                        <div>
-                            <span class="name">Firstname Lastname</span>
-                        </div>
-                        <div>
-                            <span>Request Type</span>
-                            <span>Maintenance</span>
-                        </div>
-                        <div>
-                            <span>Set Status</span>
-                            <select>
-                                <option>Unmarked</option>
-                                <option>Approved</option>
-                                <option>Disapproved</option>
-                                <option>Rejected</option>
-                                <option>Resolved</option>
-                            </select>
-                        </div>
-                        <div>
-                            <a href="">View details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card admin-request">
-                    <div class="user-image">
-                        <img src="https://via.placeholder.com/80x80" alt="logo" />
-                    </div>
-                    <div class="request-details">
-                        <div>
-                            <span class="name">Firstname Lastname</span>
-                        </div>
-                        <div>
-                            <span>Request Type</span>
-                            <span>Maintenance</span>
-                        </div>
-                        <div>
-                            <span>Set Status</span>
-                            <select>
-                                <option>Unmarked</option>
-                                <option>Approved</option>
-                                <option>Disapproved</option>
-                                <option>Rejected</option>
-                                <option>Resolved</option>
-                            </select>
-                        </div>
-                        <div>
-                            <a href="">View details</a>
-                        </div>
-                    </div>
-                </div>
 
+                    <div class="content state">
+                        <div>
+                            <span class="first">Requester</span>
+                            <span align="">
+                                <img src="https://via.placeholder.com/80x80" alt="logo" />
+                                <span>Firstname Lastname</span>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="first">Type</span>
+                            <span align="">Maintenance</span>
+                        </div>
+                        <div>
+                            <span class="first">Set Status</span>
+                            <span>
+                                <select>
+                                    <option>Unmarked</option>
+                                    <option>Approved</option>
+                                    <option>Rejected</option>
+                                    <option>Resolved</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="11" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="admin-request">
+                    <div class="tab">
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
+                    </div>
+
+                    <div class="content state">
+                        <div>
+                            <span class="first">Requester</span>
+                            <span align="">
+                                <img src="https://via.placeholder.com/80x80" alt="logo" />
+                                <span>Firstname Lastname</span>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="first">Type</span>
+                            <span align="">Maintenance</span>
+                        </div>
+                        <div>
+                            <span class="first">Set Status</span>
+                            <span>
+                                <select>
+                                    <option>Unmarked</option>
+                                    <option>Approved</option>
+                                    <option>Rejected</option>
+                                    <option>Resolved</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="11" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="admin-request">
+                    <div class="tab">
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
+                    </div>
+
+                    <div class="content state">
+                        <div>
+                            <span class="first">Requester</span>
+                            <span align="">
+                                <img src="https://via.placeholder.com/80x80" alt="logo" />
+                                <span>Firstname Lastname</span>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="first">Type</span>
+                            <span align="">Maintenance</span>
+                        </div>
+                        <div>
+                            <span class="first">Set Status</span>
+                            <span>
+                                <select>
+                                    <option>Unmarked</option>
+                                    <option>Approved</option>
+                                    <option>Rejected</option>
+                                    <option>Resolved</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="11" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="admin-request">
+                    <div class="tab">
+                        <button class="tablinks active" onclick="contentTab(event, '.state')">Status</button>
+                        <button class="tablinks" onclick="contentTab(event, '.request-text')">Details</button>
+                    </div>
+
+                    <div class="content state">
+                        <div>
+                            <span class="first">Requester</span>
+                            <span align="">
+                                <img src="https://via.placeholder.com/80x80" alt="logo" />
+                                <span>Firstname Lastname</span>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="first">Type</span>
+                            <span align="">Maintenance</span>
+                        </div>
+                        <div>
+                            <span class="first">Set Status</span>
+                            <span>
+                                <select>
+                                    <option>Unmarked</option>
+                                    <option>Approved</option>
+                                    <option>Rejected</option>
+                                    <option>Resolved</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="content request-text">
+                        <textarea class="content-details txtarea" rows="11" onfocus="dispBtn(event, true)" onfocusout="dispBtn(event, false)"></textarea>
+                    </div>
+
+                    <div class="footer" align="center">
+                        <span>
+                            <a href="#" disabled>Delete</a>
+                        </span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

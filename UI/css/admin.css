@@ -1,26 +1,16 @@
 .request {
     grid-template-columns: auto auto auto;
 }
-.admin-request{
-    display: grid;
-	grid-template-columns:30% 70%;
-	max-width:400px;
-    padding:10px; 
-    background-color: #fff;
+.admin-request {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: transparent;
+    max-width: 350px;
 }
-.request-details div {
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
+.first {
+    width: 30%;
 }
-
-.request-details div span {
-    width: 50%;
-}
-.request-details .name {
-    width:100%;
-}
-.user-image img {
+img {
     border-radius: 50%;
 }
 
@@ -34,6 +24,7 @@
     .request {
         grid-template-columns: auto;
     }
+    
     .admin-request {
         max-width: 100%;
     }
