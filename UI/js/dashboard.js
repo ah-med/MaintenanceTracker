@@ -48,3 +48,19 @@ function dispBtn(event, bool) {
         update.style.display = "none";
     }
 }
+
+// side nav over lay for mobile view
+function sideNavOverlay() {
+   var x = document.getElementById('overlay');
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+// Reload window to dispay overlay on resize
+window.onresize = function(){ 
+    if (window.innerWidth >= 1100) {
+        location.reload(false);
+    }
+}
