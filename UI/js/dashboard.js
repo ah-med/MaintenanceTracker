@@ -24,16 +24,18 @@ function contentTab(event, contentClass) {
     // get all this parents's child with class 'content'
     var content = thisElement.parentElement.parentElement.querySelectorAll(".content");
     for (i = 0; i < content.length; i++) {
+        // hide all the elements with class content
         content[i].style.display = "none";
     }
 
     tablinks = thisElement.parentElement.querySelectorAll(".tablinks");
     for (i = 0; i < tablinks.length; i++) {
+        // remove active class from all tab links
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-
+    // display the content of element clicked
     thisElement.parentElement.parentElement.querySelector(contentClass).style.display = "block";
-
+    // make this tabe element active
     thisElement.className += " active";
 }
 

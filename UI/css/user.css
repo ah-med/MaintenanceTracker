@@ -19,19 +19,6 @@
     .user-request {
         max-width: 100%;
     }
-    .form-item {
-        display: flex;
-        flex-direction: column;
-    }
-    .form-input, .form-btn {
-        margin:0;
-    }
-    .form-select {
-        margin: 12px 0;
-    }
-    .search .form-btn {
-        width: 100%;
-    }
 } 
 
 @media only screen and (max-width: 380px) {
