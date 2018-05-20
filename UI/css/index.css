@@ -1,0 +1,68 @@
+body {
+    color: #fff;
+    background-image: url("../images/bg.jpg");
+    background-color: rgb(0, 0, 0);
+    background-size: 100vh;
+    background-position: center;
+    font-family: 'Rubik', sans-serif;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+section {
+    background-color: rgb(0, 0, 0, 0.6);
+    height:100%;
+ }
+ h1 {
+     padding: 0;
+     margin: 0;
+     font-size:2rem;
+ }
+ p {
+     font-size: 18px;
+ }
+ .intro {
+    margin: 0 auto;
+    padding-top: 50%;
+ }
+ .intro  a{
+    padding: 10px;
+    margin: 10px 10px;
+ }
+ .intro-text {
+    margin-bottom: 60px;
+ }
+ .btn-action:hover {
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 4px 8px 0px;
+}
+ @media only screen and (min-width: 500px) {
+    .intro {
+        margin: 0 auto;
+        padding-top: 30%;
+     }
+ }
+
+ @media only screen and (min-width: 900px) {
+    section {
+        background-color: rgb(0, 0, 0, 0.6);
+        height: 100%;
+     }
+     h1 {
+         padding: 0;
+         margin: 0;
+         font-size: 3rem;
+     }
+     .intro {
+        margin: 0 auto;
+        padding: 200px;
+        max-width: 1000px;
+     }
+     .intro  a{
+        padding: 20px;
+        font-size: 24px;
+        margin: 0 10px;
+     }
+     .intro-text {
+        margin-bottom: 60px;
+     }
+} 
