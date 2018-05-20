@@ -1,6 +1,14 @@
 .request {
     grid-template-columns: auto auto auto;
 }
+.admin-select {
+    border: none;
+    color: rgb(167, 164, 164);
+    margin-left: 20px;
+}
+textarea:focus {
+    outline: none;
+}
 .admin-request {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
@@ -9,6 +17,9 @@
 }
 .first {
     width: 30%;
+}
+.name {
+    margin-top:10px;
 }
 img {
     border-radius: 50%;
