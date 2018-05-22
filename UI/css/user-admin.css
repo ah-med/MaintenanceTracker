@@ -1,0 +1,49 @@
+h3 {
+    margin: 0;
+}
+.approved {
+    background-color: rgb(236, 236, 155);
+}
+
+.disapproved {
+    background-color: rgb(236, 155, 155);
+}
+
+.unmarked {
+    background-color: #f1f1f1;
+}
+.status span {
+    padding: 5px;
+}
+.resolved {
+    background-color: rgb(154, 240, 154);
+}
+section {
+    margin: 0 auto;
+    width: 80%;
+}
+.section-request {
+    display: flex;
+    flex-direction: row;
+    margin: 30px auto;
+    width: 80%;
+}
+.section-header{ 
+    text-align: center;
+    color:#fff;
+    background-color: rgb(7, 18, 80);
+}
+.request {
+    width: 50%;
+    margin: 0 6px;
+    background-color: #fff;
+}
+
+.status{
+    margin-bottom: 15px;
+}
+.request-item {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 10px;
+}

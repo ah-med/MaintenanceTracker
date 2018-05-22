@@ -2,65 +2,82 @@
 <html>
 
 <head>
-	<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Signup</title>
-	<link rel="shortcut icon" href="./images/fav.ico">
+    <link rel="shortcut icon" href="./images/fav.ico">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/signup.css">
 </head>
 
 <body>
-    <nav class="navbar">
-            <div class="logo">
-                <span>Maintenance Tracker</span>
-            </div>
-            <div class="navbar-links">
+    <nav class="navbar sticky">
+        <div class="logo">
+            <span>Maintenance Tracker</span>
+        </div>
+        <div class="navbar-links">
+            <div class="link-items">
                 <span>
                     <a href="./index.html">Home</a>
-                    <a href="./admin-signin.html">Admin</a>
                 </span>
-                <span align="right">
-
-                    <a href="./user-signin.html">Login</a>
+                <span>
+                    <a href="./user.html">Users</a>
+                </span>
+                <span>
+                    <a href="./admin.html">Admin</a>
                 </span>
             </div>
-        </nav>
+            <div class="link-items" align="right">
+                <span>
+                    <a href="./signin.html">Signin</a>
+                </span>
+                <span>
+                    <a href="./signup.html">Signup</a>
+                </span>
+            </div>
+        </div>
+    </nav>
     <section>
         <div class="form-container card">
             <form>
                 <h3 class="text-center">Create an account</h3>
                 <div class="form-item">
-                    <label>First name</label><br>
-                    <input class="form-input" type="text"  placeholder="first name" required>
+                    <label>First name</label>
+                    <br>
+                    <input class="form-input" type="text" placeholder="first name" required>
                 </div>
                 <div class="form-item">
-                    <label>Last name</label><br>
-                    <input class="form-input" type="text"  placeholder="last name" required>
+                    <label>Last name</label>
+                    <br>
+                    <input class="form-input" type="text" placeholder="last name" required>
                 </div>
                 <div class="form-item">
-                    <label>Email</label><br>
-                    <input class="form-input" type="email"  placeholder="email" required>
+                    <label>Email</label>
+                    <br>
+                    <input class="form-input" type="email" placeholder="email" required>
                 </div>
                 <div class="form-item">
-                    <label>Password</label><br>
+                    <label>Password</label>
+                    <br>
                     <input class="form-input" type="password" placeholder="password" required>
                 </div>
                 <div class="form-item">
                     <input class="form-btn btn-action" type="submit" value="Sign Up">
                 </div>
                 <div class="text-center">
-                    <p>Already have account ? <a href="./user-signin.html"> Sign in</a></p>
+                    <p>Already have account ?
+                        <a href="./signin.html"> Sign in</a>
+                    </p>
                 </div>
             </form>
         </div>
     </section>
 
-    <footer >
+    <footer>
         <div class="text-center">
-			Maintenance Tracker &copy; 2018.
-		</div>
-	</footer>
+            Maintenance Tracker &copy; 2018.
+        </div>
+    </footer>
 </body>
 
 </html>
