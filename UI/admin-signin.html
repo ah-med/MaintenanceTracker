@@ -2,53 +2,67 @@
 <html>
 
 <head>
-	<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User signin </title>
-	<link rel="shortcut icon" href="./images/fav.ico">
+    <link rel="shortcut icon" href="./images/fav.ico">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/admin-signin.css">
 </head>
 
 <body>
-    <nav class="navbar">
-            <div class="logo">
-                <span>Maintenance Tracker</span>
-            </div>
-            <div class="navbar-links">
+    <nav class="navbar sticky">
+        <div class="logo">
+            <span>Maintenance Tracker</span>
+        </div>
+        <div class="navbar-links">
+            <div class="link-items">
                 <span>
                     <a href="./index.html">Home</a>
-                    <a href="#">Admin</a>
                 </span>
-                <span align="right">
-                    <a href="./user-signin.html">Login</a>
+                <span>
+                    <a href="./user.html">Users</a>
+                </span>
+                <span>
+                    <a href="./admin.html">Admin</a>
+                </span>
+            </div>
+            <div class="link-items" align="right">
+                <span>
+                    <a href="./signin.html">Signin</a>
+                </span>
+                <span>
                     <a href="./signup.html">Signup</a>
                 </span>
             </div>
-        </nav>
+        </div>
+    </nav>
     <section>
         <div class="form-container card">
-            <form action="./admin-dashboard.html">
+            <form action="./admin.html">
                 <h3 class="text-center">Admin Login</h3>
                 <div class="form-item">
-                    <label>Password</label><br>
+                    <label>Password</label>
+                    <br>
                     <input class="form-input" type="password" placeholder="password" required>
                 </div>
                 <div class="form-item">
                     <input class="form-btn btn-action" type="submit" value="Login">
                 </div>
                 <div class="text-center">
-                    <p>Not an Admin ? <a href="./user-signin.html   "> Sign In</a></p>
+                    <p>Not an Admin ?
+                        <a href="./signin.html   "> Sign In</a>
+                    </p>
                 </div>
             </form>
         </div>
     </section>
 
-    <footer >
+    <footer>
         <div class="text-center">
-			Maintenance Tracker &copy; 2018.
-		</div>
-	</footer>
+            Maintenance Tracker &copy; 2018.
+        </div>
+    </footer>
 </body>
 
 </html>

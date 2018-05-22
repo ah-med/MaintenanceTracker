@@ -11,24 +11,35 @@
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar sticky">
         <div class="logo">
             <span>Maintenance Tracker</span>
         </div>
         <div class="navbar-links">
-            <span>
-                <a href="./index.html">Home</a>
-                <a href="./admin-signin.html">Admin</a>
-            </span>
-            <span align="right">
-                <a href="./signup.html">Signup</a>
-            </span>
+            <div class="link-items">
+                <span>
+                    <a href="./index.html">Home</a>
+                </span>
+                <span>
+                    <a href="./user.html">Users</a>
+                </span>
+                <span>
+                    <a href="./admin.html">Admin</a>
+                </span>
+            </div>
+            <div class="link-items" align="right">
+                <span>
+                    <a href="./signin.html">Signin</a>
+                </span>
+                <span>
+                    <a href="./signup.html">Signup</a>
+                </span>
+            </div>
         </div>
     </nav>
-
     <section>
         <div class="form-container card">
-            <form action="./user-dashboard.html">
+            <form action="./user.html">
                 <h3 class="text-center">User Login</h3>
                 <div class="form-item">
                     <label>Email</label>

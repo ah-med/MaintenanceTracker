@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Dashboard </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./images/fav.ico">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/user-admin.css">
+    <link rel="stylesheet" href="./css/user.css">
+    <link rel="stylesheet" href="./css/modal.css">
+</head>
+
+<body>
+    <nav class="navbar sticky">
+        <div class="logo">
+            <span>Maintenance Tracker</span>
+        </div>
+        <div class="navbar-links">
+            <div class="link-items">
+                <span>
+                    <a href="./index.html">Home</a>
+                </span>
+                <span>
+                    <a href="./user.html">Users</a>
+                </span>
+                <span>
+                    <a href="./admin.html">Admin</a>
+                </span>
+            </div>
+            <div class="link-items" align="right">
+                <span>
+                    <a href="./user-signin.html">Signin</a>
+                </span>
+                <span>
+                    <a href="./signup.html">Signup</a>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <section class="sticky-section">
+        <div>
+            <button id="createBtn" class="btn-action">
+                <i class="fa fa-plus"></i> New Request
+            </button>
+        </div>
+        <div class="search sticky" align="right">
+            <form>
+                <div class="form-item">
+                    <input class="form-input" type="text" placeholder="search requests">
+                    <input class="form-btn btn-action" type="submit" value="search">
+                </div>
+            </form>
+        </div>
+        <div id="requestModal" class="modal">
+            <!-- Modal content -->
+            <div class="form-container card">
+                <span class="fa fa-close close"></span>
+                <form>
+                    <h3 class="text-center">Create new request</h3>
+                    <div class="form-item">
+                        <label>Request Type</label>
+                        <br>
+                        <select class=" form-input form-select" required disabled>
+                            <option value="maintenance">Maintenance</option>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label>Your request</label>
+                        <br>
+                        <textarea class="form-input" required rows="10"></textarea>
+                    </div>
+                    <div class="form-item">
+                        <input class="form-btn btn-action" type="submit" value="Create">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="section-request">
+        <div class="request">
+            <div class="section-header done">
+                <h3>Unresolved Requests</h3>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="unmarked">unmarked</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="approved">Approved</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="unmarked">unmarked</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="disapproved">Disapproved</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="approved">Approved</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="approved">Approved</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+        </div>
+        <div class="request">
+            <div class="section-header new">
+                <h3>Resolved Requests</h3>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="resolved">Resolved</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="resolved">Resolved</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="resolved">Resolved</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="resolved">Resolved</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+            <div class="request-item">
+                <div class="status">
+                    <span class="resolved">Resolved</span>
+                </div>
+                <div class="details">
+                    <span>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
+                        accusantium?
+                    </span>
+                    <br>
+                    <span>-- John Obi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/modal.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>
