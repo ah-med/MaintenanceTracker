@@ -7,9 +7,9 @@ import requests from '../dataStructure/index';
 class RequestController {
   /**
     * Create a Request
-    *@param {*} req The request *.
-    *@param {*} res The response *.
-    *@returns {undefined} The return *
+    *@param {object} req The request *.
+    *@param {object} res The response *.
+    *@returns {undefined} returns undefined *
     */
   static createRequest(req, res) {
     const {
@@ -26,9 +26,9 @@ class RequestController {
 
   /**
     * Fetch a requests that belongs to a logged in user
-    *@param {*} req The request *.
-    *@param {*} res The response *.
-    *@returns {undefined} The return *
+    *@param {object} req The request *.
+    *@param {object} res The response *.
+    *@returns {undefined} returns undefined *
     */
   static getRequest(req, res) {
     let { requestId } = req.params;
@@ -41,9 +41,9 @@ class RequestController {
 
   /**
     * Fetch all requests that belongs to a logged in user
-    *@param {*} req The request *.
-    *@param {*} res The response *.
-    *@returns {undefined} The return *
+    *@param {object} req The request *.
+    *@param {object} res The response *.
+    *@returns {undefined} returns undefined *
     */
   static getAllRequests(req, res) {
     res.status(200).json({
@@ -53,9 +53,9 @@ class RequestController {
 
   /**
     * Modify a Request
-    *@param {*} req The request *.
-    *@param {*} res The response *.
-    *@returns {undefined} The return *
+    *@param {object} req The request *.
+    *@param {object} res The response *.
+    *@returns {undefined} returns undefined *
     */
   static modifyRequest(req, res) {
     const { requestId } = req.params;

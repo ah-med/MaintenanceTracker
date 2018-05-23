@@ -7,9 +7,9 @@
 class RequestModel {
   /**
     * Requests constructor
-    *@param {*} type The type of request.
-    *@param {*} details The details of request.
-    *@param {*} id The id of request.
+    *@param {string} type The type of request.
+    *@param {string} details The details of request.
+    *@param {int} id The id of request.
     */
   constructor(type, details, id) {
     this.id = id;
