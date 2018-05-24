@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import multer from 'multer';
 
 import user from './routes/user';
+import auth from './routes/auth';
 
 const upload = multer();
 const app = express();
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parsing multipart/form-data
 app.use(upload.array());
 
+app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', user);
 
 // Setup a default route
