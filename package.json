@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js --exec babel-node",
-    "test": "nyc --reporter=html --reporter=text mocha --compilers js:babel-register --exit",
+    "test": "set process.env.NODE_ENV=test && nyc --reporter=html --reporter=text mocha --recursive --compilers js:babel-register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "npm run test && nyc report --reporter=text-lcov | coveralls"
   },
@@ -16,11 +16,13 @@
   "author": "ahmed",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
     "multer": "^1.3.0",
     "pg": "^7.4.3"
   },

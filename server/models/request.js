@@ -1,6 +1,3 @@
-// import users from '../data/user';
-
-
 /**
  * @class RequestsModel
  */
