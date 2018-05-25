@@ -9,6 +9,9 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "npm run test && nyc report --reporter=text-lcov | coveralls"
   },
+  "engines": {
+    "node": "8.9.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ah-med/MaintenanceTracker.git"
