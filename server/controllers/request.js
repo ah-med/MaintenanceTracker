@@ -4,6 +4,7 @@ import RequestModel from '../models/request';
 const { createRequest } = RequestModel;
 const { getRequest } = RequestModel;
 const { getAllRequests } = RequestModel;
+const { modifyRequest } = RequestModel;
 
 /**
  * @class RequestController
@@ -69,6 +70,27 @@ class RequestController {
     getAllRequests(userData.id, (err, result) => res.status(200).json({
       requests: result.rows
     }));
+  }
+  /**
+  * Modify a Request
+  *@param {object} req The request *.
+  *@param {object} res The response *.
+  *@returns {undefined} returns undefined *
+  */
+  static modifyRequest(req, res) {
+    const { requestId } = req.params;
+    const { userData } = req;
+    const { details } = req.body;
+    modifyRequest(userData.id, requestId, details, (err, result) => {
+      if (result.rowCount === 1) {
+        return res.status(200).json({
+          message: 'Modified successfully'
+        });
+      }
+      return res.status(404).json({
+        error: 'request not found'
+      });
+    });
   }
 }
 

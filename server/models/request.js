@@ -23,6 +23,13 @@ const RequestModel = {
     db.query(text, params, (err, result) => {
       callback(err, result);
     });
+  },
+  modifyRequest: (userId, reqId, details, callback) => {
+    const text = 'UPDATE requests SET details = $1 WHERE user_id = $2 AND req_id = $3 RETURNING *';
+    const params = [details, userId, reqId];
+    db.query(text, params, (err, result) => {
+      callback(err, result);
+    });
   }
 };
 
