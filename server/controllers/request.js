@@ -3,6 +3,7 @@ import RequestModel from '../models/request';
 // destructure RequestModel
 const { createRequest } = RequestModel;
 const { getRequest } = RequestModel;
+const { getAllRequests } = RequestModel;
 
 /**
  * @class RequestController
@@ -56,6 +57,18 @@ class RequestController {
         error: 'request not found'
       });
     });
+  }
+  /**
+  * Fetch all requests that belongs to a logged in user
+  *@param {object} req The request *.
+  *@param {object} res The response *.
+  *@returns {undefined} returns undefined *
+  */
+  static getAllRequests(req, res) {
+    const { userData } = req;
+    getAllRequests(userData.id, (err, result) => res.status(200).json({
+      requests: result.rows
+    }));
   }
 }
 

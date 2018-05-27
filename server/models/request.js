@@ -16,6 +16,13 @@ const RequestModel = {
     db.query(text, params, (err, result) => {
       callback(err, result);
     });
+  },
+  getAllRequests: (userId, callback) => {
+    const text = 'SELECT req_id, type, details, stat FROM requests WHERE user_id = $1';
+    const params = [userId];
+    db.query(text, params, (err, result) => {
+      callback(err, result);
+    });
   }
 };
 
