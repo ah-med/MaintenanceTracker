@@ -6,6 +6,16 @@ import db from '../server/db/index';
 chai.use(chaiHttp);
 const { expect } = chai;
 
+// clear database before running all test
+db.query('DELETE FROM users');
+
+// dummy user for test
+const user = {
+  username: 'ajani',
+  email: 'ajani@gmail,com',
+  password: 'abcd456ef'
+};
+
 describe('Test default route', () => {
   // Test for default route
   it('Should return 200 for the default route', (done) => {
@@ -20,16 +30,6 @@ describe('Test default route', () => {
 });
 
 describe('POST /auth/signup', () => {
-  const user = {
-    username: 'ajani',
-    email: 'ajani@gmail,com',
-    password: 'abcd456ef'
-  };
-  before(() => {
-    // clear the database
-    db.query('DELETE FROM users');
-  });
-
   it('Should register a user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
@@ -53,9 +53,39 @@ describe('POST /auth/signup', () => {
         done();
       });
   });
-  after(() => {
-    // clear the database
-    db.query('DELETE FROM users');
+});
+
+describe('POST /auth/login', () => {
+  it('Should login a user', (done) => {
+    const credentials = {
+      email: 'ajani@gmail,com',
+      password: 'abcd456ef'
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(credentials)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('User logged in successfully');
+        expect(res.body).to.have.property('token');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('Should not login a user', (done) => {
+    const fake = {
+      email: 'dd@dfk.ddf',
+      password: 'dfdjkd'
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(fake)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Username/Password Incorrect');
+        expect(res.status).to.equal(400);
+        done();
+      });
   });
 });
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js --exec babel-node",
-    "test": "set process.env.NODE_ENV=test && nyc --reporter=html --reporter=text mocha --recursive --compilers js:babel-register --exit",
+    "test": "set process.env.NODE_ENV=test && nyc --reporter=html --reporter=text mocha --timeout 10000 --recursive --compilers js:babel-register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "npm run test && nyc report --reporter=text-lcov | coveralls"
   },

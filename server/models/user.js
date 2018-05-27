@@ -8,6 +8,13 @@ const UserModel = {
     db.query(text, params, (err, result) => {
       callback(err, result);
     });
+  },
+  loginUser: (email, password, callback) => {
+    const text = 'SELECT user_id FROM users WHERE email = $1';
+    const params = [email];
+    db.query(text, params, (err, result) => {
+      callback(err, result);
+    });
   }
 
 };
