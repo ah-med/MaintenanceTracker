@@ -2,6 +2,7 @@ import RequestModel from '../models/request';
 
 // destructure RequestModel
 const { createRequest } = RequestModel;
+const { getRequest } = RequestModel;
 
 /**
  * @class RequestController
@@ -25,6 +26,34 @@ class RequestController {
       }
       return res.status(403).json({
         error: 'request content aready exist'
+      });
+    });
+  }
+  /**
+  * Fetch a requests that belongs to a logged in user
+  *@param {object} req The request *.
+  *@param {object} res The response *.
+  *@returns {undefined} returns undefined *
+  */
+  static getRequest(req, res) {
+    const { userData } = req;
+    const { requestId } = req.params;
+    getRequest(requestId, userData.id, (err, result) => {
+      if (result.rowCount === 1) {
+        const {
+          type, details, stat
+        } = result.rows[0];
+        return res.status(200).json({
+          request: [{
+            requestId: result.rows[0].req_id,
+            type,
+            details,
+            status: stat
+          }]
+        });
+      }
+      return res.status(404).json({
+        error: 'request not found'
       });
     });
   }

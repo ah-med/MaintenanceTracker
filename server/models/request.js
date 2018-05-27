@@ -9,6 +9,13 @@ const RequestModel = {
     db.query(text, params, (err, result) => {
       callback(err, result);
     });
+  },
+  getRequest: (reqId, userId, callback) => {
+    const text = 'SELECT * FROM requests WHERE req_id = $1 AND user_id = $2';
+    const params = [reqId, userId];
+    db.query(text, params, (err, result) => {
+      callback(err, result);
+    });
   }
 };
 
