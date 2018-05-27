@@ -8,13 +8,16 @@ const { expect } = chai;
 
 // clear database before running all test
 db.query('DELETE FROM users');
+db.query('DELETE FROM requests');
 
 // dummy user for test
 const user = {
   username: 'ajani',
-  email: 'ajani@gmail,com',
+  email: 'ajani@gmail.com',
   password: 'abcd456ef'
 };
+let newToken = 'Bearer ';
+let newLocation = '';
 
 describe('Test default route', () => {
   // Test for default route
@@ -56,15 +59,17 @@ describe('POST /auth/signup', () => {
 });
 
 describe('POST /auth/login', () => {
-  it('Should login a user', (done) => {
+  it('should login a user', (done) => {
     const credentials = {
-      email: 'ajani@gmail,com',
+      email: 'ajani@gmail.com',
       password: 'abcd456ef'
     };
     chai.request(app)
       .post('/api/v1/auth/login')
       .send(credentials)
       .end((err, res) => {
+        const { token } = res.body;
+        newToken += token;
         expect(res.body).to.have.property('message')
           .eql('User logged in successfully');
         expect(res.body).to.have.property('token');
@@ -72,7 +77,7 @@ describe('POST /auth/login', () => {
         done();
       });
   });
-  it('Should not login a user', (done) => {
+  it('should not login a user', (done) => {
     const fake = {
       email: 'dd@dfk.ddf',
       password: 'dfdjkd'
@@ -90,25 +95,36 @@ describe('POST /auth/login', () => {
 });
 
 describe('POST /users/requests', () => {
-  it('create a new request', (done) => {
+  it('should create a new request', (done) => {
     const request = {
-      type: 'maintenance',
       details: 'I need to format my PC'
     };
     chai.request(app)
       .post('/api/v1/users/requests')
+      .set('Authorization', newToken)
       .send(request)
       .end((err, res) => {
-        expect(res.body).to.have.property('request')
-          .eql({
-            id: 100,
-            type: 'maintenance',
-            details: 'I need to format my PC',
-            status: 'Unmarked'
-          });
-        expect(res.body).to.have.property('location')
-          .eql('localhost:8000/api/v1/users/requests/100');
+        const { location } = res.body;
+        newLocation = location;
+        expect(res.body).to.have.property('message')
+          .eql('Request Successfully Created');
+        expect(res.body).to.have.property('location');
         expect(res.status).to.equal(201);
+        done();
+      });
+  });
+  it('should not duplicate request detials', (done) => {
+    const request = {
+      details: 'I need to format my PC'
+    };
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .set('Authorization', newToken)
+      .send(request)
+      .end((err, res) => {
+        expect(res.body).to.have.property('error')
+          .eql('request content aready exist');
+        expect(res.status).to.equal(403);
         done();
       });
   });
@@ -117,11 +133,11 @@ describe('POST /users/requests', () => {
 describe('PUT /users/requests/<requestId>', () => {
   it('Modify request', (done) => {
     const request = {
-      type: 'maintenance',
       details: 'I need a PC upgrade'
     };
     chai.request(app)
-      .put('/api/v1/users/requests/100')
+      .put(newLocation)
+      .set('Authorization', newToken)
       .send(request)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
@@ -130,31 +146,90 @@ describe('PUT /users/requests/<requestId>', () => {
         done();
       });
   });
+  it('should not modify a non-existing request', (done) => {
+    const request = {
+      details: 'I need a PC upgrade'
+    };
+    chai.request(app)
+      .put('/api/v1/users/requests/100')
+      .set('Authorization', newToken)
+      .send(request)
+      .end((err, res) => {
+        expect(res.body).to.have.property('error')
+          .eql('request not found');
+        expect(res.status).to.equal(404);
+        done();
+      });
+  });
 });
 
 describe('GET /users/requests/<requestId>', () => {
-  it('Fetch a request', (done) => {
+  it('it should fetch a request', (done) => {
     chai.request(app)
-      .get('/api/v1/users/requests/100')
+      .get(newLocation)
+      .set('Authorization', newToken)
       .end((err, res) => {
         expect(res.body).to.have.property('request');
-        expect(res.body.request).to.have.property('id');
-        expect(res.body.request).to.have.property('type');
-        expect(res.body.request).to.have.property('details');
-        expect(res.body.request).to.have.property('status');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('it should not fetch a request', (done) => {
+    chai.request(app)
+      .get('/api/v1/users/requests/100')
+      .set('Authorization', newToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('error');
+        expect(res.status).to.equal(404);
         done();
       });
   });
 });
 
 describe('GET /users/requests', () => {
-  it('Fetch all request', (done) => {
+  it('it should fetch all requests', (done) => {
     chai.request(app)
       .get('/api/v1/users/requests')
+      .set('Authorization', newToken)
       .end((err, res) => {
         expect(res.body).to.have.property('requests');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('it should fetch all requests', (done) => {
+    chai.request(app)
+      .get('/api/v1/users/requests')
+      .set('Authorization', newToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('requests');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+});
+
+describe('verifyToken', () => {
+  it('should return 403 error for undefined header', (done) => {
+    chai.request(app)
+      .get('/api/v1/users/requests')
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Kindly sign in');
+        expect(res.body).to.have.property('error')
+          .eql(true);
+        expect(res.status).to.equal(403);
+        done();
+      });
+  });
+  it('should return 403 error wrong token', (done) => {
+    chai.request(app)
+      .get('/api/v1/users/requests')
+      .set('Authorization', 'wrongtoken')
+      .end((err, res) => {
+        expect(res.body).to.have.property('error')
+          .eql('Something is not right. Kindly sign in');
+        expect(res.status).to.equal(403);
         done();
       });
   });
