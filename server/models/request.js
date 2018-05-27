@@ -1,19 +1,15 @@
-/**
- * @class RequestsModel
- */
-class RequestModel {
-  /**
-    * Requests constructor
-    *@param {string} type The type of request.
-    *@param {string} details The details of request.
-    *@param {int} id The id of request.
-    */
-  constructor(type, details, id) {
-    this.id = id;
-    this.type = type;
-    this.details = details;
-    this.status = 'Unmarked';
+
+import db from '../db/index';
+
+const RequestModel = {
+
+  createRequest: (userId, details, callback) => {
+    const text = 'INSERT INTO requests (user_id, type, details, stat) values($1, $2, $3, $4) RETURNING req_id';
+    const params = [userId, 'maintenance', details, 'pending'];
+    db.query(text, params, (err, result) => {
+      callback(err, result);
+    });
   }
-}
+};
 
 export default RequestModel;
