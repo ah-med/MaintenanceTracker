@@ -17,4 +17,7 @@ router.get('/', tokenVerification, isAdmin, adminController.getRequests);
 // Approve a request
 router.put('/:requestId/approve', tokenVerification, isAdmin, isPending, adminController.updateStatus);
 
+// Disapprove a request
+router.put('/:requestId/disapprove', tokenVerification, isAdmin, adminController.updateStatus);
+
 export default router;
