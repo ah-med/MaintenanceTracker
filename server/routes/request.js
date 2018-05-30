@@ -20,4 +20,7 @@ router.put('/:requestId/approve', tokenVerification, isAdmin, isPending, adminCo
 // Disapprove a request
 router.put('/:requestId/disapprove', tokenVerification, isAdmin, adminController.updateStatus);
 
+// Resolve a request
+router.put('/:requestId/resolve', tokenVerification, isAdmin, adminController.updateStatus);
+
 export default router;

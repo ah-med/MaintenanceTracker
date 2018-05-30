@@ -1,7 +1,9 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import UserModel from '../models/user';
+import AdminModel from '../models/admin';
 
+const { setAdmin } = AdminModel;
 
 /**
  * @class UserController
@@ -15,6 +17,7 @@ class UserController {
     */
   static createUser(req, res) {
     const { username, email, password } = req.body;
+    const { userData } = req;
     const pass = bcrypt.hashSync(password, 10);
     UserModel.createUser(username, email, pass, (err) => {
       if (err) {
@@ -24,6 +27,10 @@ class UserController {
             message: 'user already exist'
           }
         });
+      }
+      if (userData && userData.admin === true) {
+        console.log(userData);
+        setAdmin(email);
       }
       return res.status(201).json({
         message: 'User Registered. Login with your credentials'
@@ -40,11 +47,12 @@ class UserController {
     const { email, password } = req.body;
     // select user in the database
     UserModel.loginUser(email, password, (err, result) => {
-      // console.log(result)
       if (result.rowCount === 1) {
         const id = result.rows[0].user_id;
+        const { admin } = result.rows[0];
         const userData = {
-          id
+          id,
+          admin
         };
         // Assign token to user for six hours
         const token = jwt.sign(userData, process.env.SECRET_KEY, { expiresIn: '6h' });
