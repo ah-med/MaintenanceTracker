@@ -1,9 +1,10 @@
 body {
     color: #fff;
     background-image: url("../images/bg.jpg");
-    background-color: rgb(0, 0, 0);
+    background-color: #fff;
     background-size: 100vh;
-    background-position: center;
+    background-position: right;
+    background-repeat: no-repeat;
     font-family: 'Rubik', sans-serif;
     height: 100vh;
     padding: 0;
