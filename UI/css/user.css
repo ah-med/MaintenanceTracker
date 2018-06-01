@@ -2,6 +2,9 @@ section {
     margin: 20px auto;
     width: 80%;
 }
+textarea {
+    resize: none;
+}
 .sticky-section {
     position: sticky;
     display: flex;
