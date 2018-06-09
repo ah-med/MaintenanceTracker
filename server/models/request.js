@@ -30,6 +30,13 @@ const RequestModel = {
     db.query(text, params, (err, result) => {
       callback(err, result);
     });
+  },
+  getStatus: (requestId, callback) => {
+    const text = 'SELECT stat FROM requests WHERE req_id = $1';
+    const param = [requestId];
+    db.query(text, param, (err, result) => {
+      callback(err, result);
+    });
   }
 };
 

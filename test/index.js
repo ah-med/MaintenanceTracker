@@ -2,6 +2,8 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../index';
 import db from '../server/db/index';
+import admin from '../server/admin';
+
 
 chai.use(chaiHttp);
 const { expect } = chai;
@@ -10,6 +12,9 @@ const { expect } = chai;
 db.query('DELETE FROM users');
 db.query('DELETE FROM requests');
 
+// register a master admin
+admin.register();
+
 // dummy user for test
 const user = {
   username: 'ajani',
@@ -17,7 +22,9 @@ const user = {
   password: 'abcd456ef'
 };
 let newToken = 'Bearer ';
+let adminToken = 'Bearer ';
 let newLocation = '';
+let newId;
 
 describe('Test default route', () => {
   // Test for default route
@@ -77,6 +84,24 @@ describe('POST /auth/login', () => {
         done();
       });
   });
+  it('should login an admin', (done) => {
+    const adminCred = {
+      email: 'admin@mail.com',
+      password: 'iamadmin'
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(adminCred)
+      .end((err, res) => {
+        const { token } = res.body;
+        adminToken += token;
+        expect(res.body).to.have.property('message')
+          .eql('User logged in successfully');
+        expect(res.body).to.have.property('token');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
   it('should not login a user', (done) => {
     const fake = {
       email: 'dd@dfk.ddf',
@@ -104,11 +129,13 @@ describe('POST /users/requests', () => {
       .set('Authorization', newToken)
       .send(request)
       .end((err, res) => {
-        const { location } = res.body;
+        const { requestId, location } = res.body;
         newLocation = location;
+        newId = requestId;
         expect(res.body).to.have.property('message')
           .eql('Request Successfully Created');
         expect(res.body).to.have.property('location');
+        expect(res.body).to.have.property('requestId');
         expect(res.status).to.equal(201);
         done();
       });
@@ -164,7 +191,7 @@ describe('PUT /users/requests/<requestId>', () => {
 });
 
 describe('GET /users/requests/<requestId>', () => {
-  it('it should fetch a request', (done) => {
+  it('should fetch a request', (done) => {
     chai.request(app)
       .get(newLocation)
       .set('Authorization', newToken)
@@ -204,6 +231,59 @@ describe('GET /users/requests', () => {
       .end((err, res) => {
         expect(res.body).to.have.property('requests');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+});
+
+describe('Get /requests/', () => {
+  it('should fetch all requests in the application', (done) => {
+    chai.request(app)
+      .get('/api/v1/requests')
+      .set('Authorization', adminToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('requests');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('it should work only for admin', (done) => {
+    chai.request(app)
+      .get('/api/v1/requests')
+      .set('Authorization', newToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('error')
+          .eql('forbidden');
+        expect(res.status).to.equal(403);
+        done();
+      });
+  });
+});
+
+describe('PUT /requests/<requestId>/approve', () => {
+  const status = {
+    status: 'approved'
+  };
+  it('should approve a request', (done) => {
+    chai.request(app)
+      .put(`/api/v1/requests/${newId}/approve`)
+      .set('Authorization', adminToken)
+      .send(status)
+      .end((err, res) => {
+        expect(res.body).to.have.property('requests');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('should only approve a pending request', (done) => {
+    chai.request(app)
+      .put(`/api/v1/requests/${newId}/approve`)
+      .set('Authorization', adminToken)
+      .send(status)
+      .end((err, res) => {
+        expect(res.body).to.have.property('error')
+          .eql('Action not allowed when status is not pending');
+        expect(res.status).to.equal(403);
         done();
       });
   });

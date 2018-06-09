@@ -10,11 +10,20 @@ const UserModel = {
     });
   },
   loginUser: (email, password, callback) => {
-    const text = 'SELECT user_id FROM users WHERE email = $1';
+    const text = 'SELECT user_id, admin  FROM users WHERE email = $1';
     const params = [email];
-    db.query(text, params, (err, result) => {
-      callback(err, result);
-    });
+    if (email === 'admin@mail.com') {
+      db.query('UPDATE users SET admin = true WHERE email = $1 RETURNING *', params)
+        .then(() => {
+          db.query(text, params, (err, result) => {
+            callback(err, result);
+          });
+        });
+    } else {
+      db.query(text, params, (err, result) => {
+        callback(err, result);
+      });
+    }
   }
 
 };

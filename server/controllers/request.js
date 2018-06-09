@@ -1,10 +1,12 @@
 import RequestModel from '../models/request';
 
+
 // destructure RequestModel
 const { createRequest } = RequestModel;
 const { getRequest } = RequestModel;
 const { getAllRequests } = RequestModel;
 const { modifyRequest } = RequestModel;
+
 
 /**
  * @class RequestController
@@ -23,6 +25,7 @@ class RequestController {
       if (result) {
         return res.status(201).json({
           message: 'Request Successfully Created',
+          requestId: result.rows[0].req_id,
           location: `/api/v1/users/requests/${result.rows[0].req_id}`
         });
       }
@@ -87,9 +90,6 @@ class RequestController {
           message: 'Modified successfully'
         });
       }
-      return res.status(404).json({
-        error: 'request not found'
-      });
     });
   }
 }
