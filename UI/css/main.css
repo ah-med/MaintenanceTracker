@@ -12,6 +12,13 @@ body {
     background-color: #F1F1F1;
     margin: 0px;
 }
+button {
+    cursor: pointer;
+}
+button:focus {
+    outline: none;
+    
+}
 
 img {
     width: 50px;
