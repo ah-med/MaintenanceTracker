@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,32 +12,53 @@
 
 <body>
     <section id="home-intro">
-        <div class="intro">
-            <div class="intro-text">
-                <h1> Maintenance Tracker </h1>
-                <p>Make your request and monitor its status</p>
-            </div>
-            <div class="action">
-                <button class="btn-action btn-white" onclick="toggleDisplay('learn-more')">
-                    <i class="fa fa-info-circle"></i> Learn more</button>
-                <a href="./signin.html" class="btn-action">
-                    <i class="fa fa-play-circle"></i> Get started</a>
-            </div>
-            <div id="learn-more" class="text">
+        <div class="nav">
+            <button class="btn-action btn-form" onclick="toggleForms('login')">
+                <i class="fa fa-sign-in"></i> Login</button>
+        </div>
+        <div class="row">
+            <div class="intro">
+                <div class="box">
+                    <div class="intro-text">
+                        <h1> Maintenance Tracker </h1>
+                        <p>Make your request and monitor its status</p>
+                    </div>
+                    <div class="action">
+                        <button class="btn-action btn-white" onclick="toggleDisplay('learn-more')">
+                            <i class="fa fa-info-circle"></i> Learn more</button>
+                        <button class="btn-action" onclick="toggleForms('signup')">
+                            <i class="fa fa-play-circle"></i> Get started</button>
+                    </div>
+                </div>
+                <div id="learn-more" class="text">
                     <p>
-                        We believe that faster maintenance/repair activity cycle in an organisation will improve the overall effeciency of the
-                        employees in an organisation. Maintenance Tracker app allows employees to make a request about their
-                        repair and maintenance needs and a maintenance officer can update the status of the request.
+                        We believe that faster maintenance/repair activity cycle in an organisation will improve the overall effeciency of the employees
+                        in an organisation. Maintenance Tracker app allows employees to make a request about their repair
+                        and maintenance needs and a maintenance officer can update the status of the request.
                     </p>
                     <p>
-                        An employee creates a request and a maintenance officer responds to the request by updating its status, request status can be: 
-                        <ul>
-                            <li>Pending</li>
-                            <li>Approved</li>
-                            <li>Rejected</li>
-                            <li>Resolved</li>
-                        </ul>
+                        An employee creates a request and a maintenance officer responds to the request by updating its status, request status can
+                        be: Pending, Approved, Rejected, Resolved
                     </p>
+                </div>
+            </div>
+            <div class="form-box">
+                <form id="login" class="login-form box card hide">
+                    <div class="form-item">
+                        <label>Email</label>
+                        <br>
+                        <input class="form-input" type="email" placeholder="email" required>
+                    </div>
+                    <div class="form-item">
+                        <label>Password</label>
+                        <br>
+                        <input class="form-input" type="password" placeholder="password" required>
+                    </div>
+                    <div class="form-item">
+                        <input class="form-btn btn-action btn-form" type="submit" value="Login">
+                    </div>
+                </form>
+
             </div>
         </div>
     </section>

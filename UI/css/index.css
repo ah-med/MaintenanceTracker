@@ -1,13 +1,37 @@
 body {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+    color: #fff;
 }
-.flex {
+.hide {
+    display: none;
+}
+.nav {
+    box-sizing: border-box;
+}
+.nav .btn-form {
+    position: relative;
+    margin: 10px 0;
+}
+
+.row {
     display: flex;
+    flex-wrap: wrap;
+    height: 80%;
 }
+.row .intro {
+    margin-top: 100px;
+}
+.intro {
+    flex: 50%;
+    color: #fff;
+}
+
 section {
     height: 700px;
     background-color: #F5F5F5;
+    box-sizing: border-box;
 }
 h1 {
      padding: 0;
@@ -17,32 +41,39 @@ h1 {
 p {
      font-size: 18px;
 }
+.box {
+    background-color: rgba(0, 0, 0, 0.3);
+}
 .text {
     font-family: 'Arial Narrow', Arial, sans-serif;
 }
-.intro {
-    width: 600px;
-    background-color: rgba(0, 0, 0, 0.1);
+.intro .box{
     padding: 15px;
-    color: #fff;
-    height: auto;
+    max-width: 603px;
 }
 .intro-text {
     margin-bottom: 50px;
     color: rgba(255, 255, 255);
 }
-.action a {
-    margin-left: 30px;
+.action button:first-child {
+    margin-right: 30px;
 }
 #home-intro {
+    box-sizing: border-box;
     background-image: url("../images/bg.jpg");
     background-size: cover;
-    padding: 150px 0 0 80px;
+    background-position: center;
+    /*padding: 150px 0 0 80px;*/
+}
+#home-intro .row {
+    margin-top: 30px;
 }
 #learn-more {
     display: none;
     background-color: rgba(0, 0, 0, 0.3);
     padding: 5px;
+    margin: 20px 10px;
+    border-radius: 10px;
 }
 .btn-white {
     background-color: #fff;
@@ -53,4 +84,68 @@ p {
 }
 .sub-section {
     background-color: #fff;
+}
+
+/* form */
+.form-box {
+    flex: 50%;
+    padding: 0px 60px;
+}
+.form-box form {
+    padding: 40px;
+    max-width: 450px;
+}
+.form-box .login-form {
+    margin-top: 50px;
+}
+.card {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 20px;
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(231, 231, 231);
+    border-image: initial;
+    border-radius: 5px;
+}
+
+.form-item {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-input, .form-btn {
+    width: 100%;
+    padding: 8px;
+}
+.btn-form {
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 500px) {
+    .row .intro {
+        padding-left: 80px;
+    }
+}
+@media only screen and (min-width: 900px) {
+    .nav .btn-form {
+        left: 90%;
+    }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+    .nav .btn-form {
+        left: 70%;
+    }
+}
+
+@media only screen and (max-width: 900px) and (min-width: 600px) {
+    .nav .btn-form {
+        left: 80%;
+    }
+}
+
+@media only screen and (max-width: 1270px) and (min-width: 860px) {
+    .form-box .login-form {
+        margin-top: 90px;
+    }
 }
