@@ -4,9 +4,6 @@ body {
     box-sizing: border-box;
     color: #fff;
 }
-.hide {
-    display: none;
-}
 .nav {
     box-sizing: border-box;
 }
@@ -75,10 +72,6 @@ p {
     margin: 20px 10px;
     border-radius: 10px;
 }
-.btn-white {
-    background-color: #fff;
-    color: #35475E;
-}
 .btn-action:hover {
     box-shadow: rgba(0, 0, 0, 0.8) 0px 4px 8px 0px;
 }
@@ -115,10 +108,6 @@ p {
 .form-input, .form-btn {
     width: 100%;
     padding: 8px;
-}
-.btn-form {
-    background-color: rgba(0, 0, 0, 0.3);
-    cursor: pointer;
 }
 
 @media only screen and (min-width: 500px) {

@@ -4,14 +4,45 @@
 a {
     text-decoration: none;
 }
-.edit {
-    position: absolute;
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+/* modal styles */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4)
+}
+.modal form {
+    margin: 80px auto;
+    width: 40%;
+    border: 1px solid #fff;
+}
+/* The Close Button */
+.close {
+    color: #fff;
+    float: right;
+    padding: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    padding-right: 26%;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-body {
-    background-color: #F1F1F1;
-    margin: 0px;
-}
 button {
     cursor: pointer;
 }
@@ -19,7 +50,6 @@ button:focus {
     outline: none;
     
 }
-
 img {
     width: 50px;
     height: 50px;
@@ -28,81 +58,6 @@ img {
     position: sticky;
 
 }
-
-/**** nav styles ****/
-.navbar {
-    top:0px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 18px;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    background-color: rgb(255, 255, 255, 0.4);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
-}
-.user-profile {
-    position: relative;
-}
-
-.user-profile .edit {
-    display: none;
-    left: 150px;
-    background: rgb(255, 255, 255, 0.4);
-    background: 1px solid #35475E;
-}
-
-.user-profile:hover .edit{
-    display: block;
-    width: 55px;
-}
-
-.logo {
-    color:#fff;
-    padding: 16px;
-    width: 220px;
-    background-color: rgb(7, 18, 80);
-}
-.logo span{
-    font-size:20px
-}
-.navbar-links {
-    display: flex;
-    flex-direction: row;
-    padding-top: 10px;
-    width: 80%;
-    background-color: rgb(255, 255, 255, 0.4)
-}
-
-.navbar-links div {
-    padding: 0px;
-    width: 50%;
-}
-
-.navbar-links span a {
-    margin: 0 12px;
-}
-
-/* form */
-.form-container {
-    background-color: rgb(255, 255, 255);
-    max-width: 450px;
-    margin: 90px auto;
-    padding: 40px;
-}
-
-.card {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 20px;
-    border-width: 0px;
-    border-style: solid;
-    border-color: rgb(231, 231, 231);
-    border-image: initial;
-    border-radius: 5px;
-}
-
-.user-request:hover, .admin-request:hover {
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 20px;
-}
-
 .form-item {
     margin-bottom: 20px;
     width: 100%;
@@ -126,6 +81,16 @@ img {
 }
 .btn-action:hover {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+}
+
+.btn-form {
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #35475E;
 }
 
 .text-center {

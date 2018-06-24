@@ -1,26 +1,99 @@
-section {
-    margin: 20px auto;
-    width: 80%;
+* {
+    box-sizing: border-box;
 }
-.sticky-section {
-    position: sticky;
-    top: 60px;
+body {
+    padding: 0;
+    margin: 0;
+    color: #fff;
 }
+
+.box {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border: 1px solid orangered;
+}
+.box-white {
+    border: 1px solid #fff;
+}
+/* Requests tabs */
+.active {
+    background-color: #75747438;    
+}
+.tab {
+    background-color: white;
+}
+.tab button {
+    display: inline-block;
+    padding: 10px;
+    margin:0;
+}
+.tab button:hover {
+    background-color: #b4b4b45d;
+}
+
+
+/* Column container */
+.row {  
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side-bar {
+    flex: 30%;
+    background-color: #f1f18c;
+    padding: 20px;
+}
+
+/* Main column */
+.main {
+    flex: 70%;
+    background-color: rgb(189, 231, 112);
+    padding: 20px;
+}
+
+/* dummy user image */
+.user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    font-size: 24px;
+    text-align: center;
+    color: black;
+    padding-top: 9px;
+    margin-bottom: 10px;
+}
+
+/* profile nav */
+.nav .btn-white {
+    position: relative;
+    margin: 10px 0;
+    left: 75%;
+    padding: 3px;
+}
+
+/* search */
 .search {
-    width: 50%;
-    margin-left: 540px;
+    width: 100%;
 }
-form {
+.search form {
     margin: 0;
     display: flex;
     flex-direction: row;
 }
-form .form-btn {
+.search .form-btn {
     width: 20%;
 }
-form .form-input {
+.search form .form-input {
     width: 80%;
 }
-.sticky-section .form-input, .sticky-section .form-btn {
-    margin: 0;
+
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
 }
