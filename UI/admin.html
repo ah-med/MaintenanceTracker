@@ -8,238 +8,104 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="./images/fav.ico">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/user-admin.css">
     <link rel="stylesheet" href="./css/admin.css">
-
 </head>
 
 <body>
-    <nav class="navbar sticky">
-        <div class="logo">
-            <span>Maintenance Tracker</span>
+    <div id="adminModal" class="modal hide">
+        <div>
+            <span class="close" onclick="closeModal('adminModal')">&times;</span>
         </div>
-        <div class="navbar-links">
-            <div class="link-items">
-                <span>
-                    <a href="./index.html">Home</a>
-                </span>
-                <span>
-                    <a href="./user.html">Users</a>
-                </span>
-                <span>
-                    <a href="./admin.html">Admin</a>
-                </span>
+        <form id="signup" class="sigup-form card box box-white">
+            <div class="form-item">
+                <label>Full name</label>
+                <br>
+                <input class="form-input" type="text" placeholder="full name" required>
             </div>
-            <div class="link-items" align="right">
-                <span>
-                    <a href="./signin.html">Signin</a>
-                </span>
-                <span>
-                    <a href="./signup.html">Signup</a>
-                </span>
+            <div class="form-item">
+                <label>Email</label>
+                <br>
+                <input class="form-input" type="email" placeholder="adminMail@company.com" required>
             </div>
-        </div>
-    </nav>
-    <section class="sticky-section">
-        <div class="search sticky" align="right">
-            <form>
-                <input class="form-input" type="text" placeholder="search requests">
-                <input class="form-btn btn-action" type="submit" value="search">
-            </form>
-        </div>
-    </section>
-    <section class="section-request">
-        <div class="request">
-            <div class="section-header done">
-                <h3>Unmarked Requests</h3>
+            <div class="form-item">
+                <label>Password</label>
+                <br>
+                <input class="form-input" type="password" placeholder="password" required>
             </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="first">Set Status</span>
-                    <span class="unmarked">unmarked</span>
-                    <span align="center">
-                        <select class="admin-select">
-                            <option>Unmarked</option>
-                            <option>Approved</option>
-                            <option>Rejected</option>
-                            <option>Resolved</option>
-                        </select>
-                    </span>
+            <div class="form-item">
+                <input class="form-btn btn-action btn-form" type="submit" value="Create Admin">
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <!-- side bar section -->
+        <section class="side-bar box">
+            <div class="profile box">
+                <div class="nav">
+                    <a href="./index.html" class="btn-action btn-white">
+                        <i class="fa fa-sign-in"></i> Logout</a>
                 </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
+                <div class="user-info">
+                    <div class="user-image">
+                        A
+                    </div>
+                    <span>John Doe</span>
                     <br>
-                    <span>-- John Obi</span>
+                    <span>Maintenace Director</span>
                 </div>
             </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="first">Set Status</span>
-                    <span class="unmarked">unmarked</span>
-                    <span align="center">
-                        <select class="admin-select">
-                            <option>Unmarked</option>
-                            <option>Approved</option>
-                            <option>Rejected</option>
-                            <option>Resolved</option>
-                        </select>
-                    </span>
+            <div class="menu box">
+                <button id="createAdmin" class="btn-action btn-white" onclick="openModal('adminModal')">
+                    <i class="fa fa-plus"></i> Create Admin</button>
+                <button class="btn-action" onclick="displayModal">
+                    <i class="fa fa-plus"></i> Add employee</button>
+            </div>
+        </section>
+        <!-- main content-->
+        <section class="main box">
+            <div class="search box">
+                <form>
+                    <input class="form-input" type="text" placeholder="search requests">
+                    <input class="form-btn btn-action" type="submit" value="search">
+                </form>
+            </div>
+            <div class="request-board box">
+                <div class="tab">
+                    <button class="btn-action tab-links btn-white active" onclick="displayTabItem(event, 'all')">
+                        <a href="#">All</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'pend')">
+                        <a href="#">Pending</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'appr')">
+                        <a href="#">Approved</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'disappr')">
+                        <a href="#">Disapproved</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'resol')">
+                        <a href="#">Resolved</a>
+                    </button>
                 </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
+                <div id="all" class="tab-item request-body box show">
+                    This is all requests
+                </div>
+                <div id="pend" class="tab-item request-body box hide">
+                    This is all Pending requets
+                </div>
+                <div id="appr" class="tab-item request-body box hide">
+                    This is all Approved requests
+                </div>
+                <div id="disappr" class="tab-item request-body box hide">
+                    This is all Disapproved requests
+                </div>
+                <div id="resol" class="tab-item request-body box hide">
+                    This is all Resolved requests
                 </div>
             </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="first">Set Status</span>
-                    <span class="unmarked">unmarked</span>
-                    <span align="center">
-                        <select class="admin-select">
-                            <option>Unmarked</option>
-                            <option>Approved</option>
-                            <option>Rejected</option>
-                            <option>Resolved</option>
-                        </select>
-                    </span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="first">Set Status</span>
-                    <span class="unmarked">unmarked</span>
-                    <span align="center">
-                        <select class="admin-select">
-                            <option>Unmarked</option>
-                            <option>Approved</option>
-                            <option>Rejected</option>
-                            <option>Resolved</option>
-                        </select>
-                    </span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-        </div>
-        <div class="request">
-            <div class="section-header new">
-                <h3>Marked Requests</h3>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="resolved">Resolved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="approved">Approved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="resolved">Resolved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="disapproved">Disapproved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="resolved">Resolved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="disapproved">Disapproved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="approved">Approved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script src="js/dashboard.js"></script>
+        </section>
+    </div>
+    <script src="./js/admin.js"></script>
 </body>
 
 </html>
