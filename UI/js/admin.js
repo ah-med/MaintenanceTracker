@@ -23,7 +23,7 @@ function closeModal(id) {
     //get the modal element by id
     var modalElement = document.getElementById(id);
 
-    //display the modal element
+    //hide the modal element
     modalElement.className = modalElement.className.replace(" show", " hide")
 
 }

@@ -37,6 +37,36 @@
             </div>
         </form>
     </div>
+    <div id="employeeModal" class="modal hide">
+        <div>
+            <span class="close" onclick="closeModal('employeeModal')">&times;</span>
+        </div>
+        <form id="createUser" class="sigup-form card box box-white">
+            <div class="form-item">
+                <label>Full name</label>
+                <br>
+                <input class="form-input" type="text" placeholder="full name" required>
+            </div>
+            <div class="form-item">
+                <label>Email</label>
+                <br>
+                <input class="form-input" type="email" placeholder="userMail@company.com" required>
+            </div>
+            <div class="form-item">
+                <label>Role</label>
+                <br>
+                <input class="form-input" type="text" placeholder="your role in the organisation" required>
+            </div>
+            <div class="form-item">
+                <label>Password</label>
+                <br>
+                <input class="form-input" type="password" placeholder="password" required>
+            </div>
+            <div class="form-item">
+                <input class="form-btn btn-action btn-form" type="submit" value="Add employee">
+            </div>
+        </form>
+    </div>
     <div class="row">
         <!-- side bar section -->
         <section class="side-bar box">
@@ -57,7 +87,7 @@
             <div class="menu box">
                 <button id="createAdmin" class="btn-action btn-white" onclick="openModal('adminModal')">
                     <i class="fa fa-plus"></i> Create Admin</button>
-                <button class="btn-action" onclick="displayModal">
+                <button class="btn-action" onclick="openModal('employeeModal')">
                     <i class="fa fa-plus"></i> Add employee</button>
             </div>
         </section>
