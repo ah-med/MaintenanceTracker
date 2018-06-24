@@ -89,6 +89,51 @@ body {
 .search form .form-input {
     width: 80%;
 }
+/* requests */
+.request {
+    margin-top: 30px;
+}
+.request:first-child {
+    margin-top: 0;
+}
+.request-header, .request-content {
+    padding:10px;
+}
+.request-header {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #fff;
+}
+.request-header .user {
+    width: 50%;
+}
+.request-header .status {
+    width: 50%;
+}
+.status {
+    padding-left: 40%;
+    margin-right: 5px;
+    padding-top: 10px;
+}
+.set-status {
+    padding-left: 92.5%;
+}
+.set-status span {
+    font-size:20px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.user {
+    display:flex;
+}
+.user .user-image {
+    margin-right: 20px;
+}
+.user .info {
+    width: 70%;
+    padding-top: 10px;
+}
+
 
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
