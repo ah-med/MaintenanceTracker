@@ -4,238 +4,223 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>User Dashboard </title>
+    <title>Admin</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="./images/fav.ico">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/user-admin.css">
-    <link rel="stylesheet" href="./css/user.css">
-    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/admin.css">
 </head>
 
 <body>
-    <nav class="navbar sticky">
-        <div class="logo">
-            <span>Maintenance Tracker</span>
-        </div>
-        <div class="navbar-links">
-            <div class="link-items">
-                <span>
-                    <a href="./index.html">Home</a>
-                </span>
-                <span>
-                    <a href="./user.html">Users</a>
-                </span>
-                <span>
-                    <a href="./admin.html">Admin</a>
-                </span>
-            </div>
-            <div class="link-items" align="right">
-                <span>
-                    <a href="./user-signin.html">Signin</a>
-                </span>
-                <span>
-                    <a href="./signup.html">Signup</a>
-                </span>
-            </div>
-        </div>
-    </nav>
-    <section class="sticky-section">
+    <div id="newRequestModal" class="modal hide">
         <div>
-            <button id="createBtn" class="btn-action">
-                <i class="fa fa-plus"></i> New Request
-            </button>
+            <span class="close" onclick="closeModal('newRequestModal')">&times;</span>
         </div>
-        <div class="search sticky" align="right">
-            <form>
-                <div class="form-item">
+        <form id="createRequest" class="sigup-form card box box-white">
+            <div class="form-item">
+                <label>Your request</label>
+                <br>
+                <textarea class="form-input" required rows="10"></textarea>
+            </div>
+            <div class="form-item">
+                <input class="form-btn btn-action" type="submit" value="Create">
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <!-- side bar section -->
+        <section class="side-bar box">
+            <div class="profile box">
+                <div class="nav">
+                    <a href="./index.html" class="btn-action btn-white">
+                        <i class="fa fa-sign-in"></i> Logout</a>
+                </div>
+                <div class="user-info">
+                    <div class="user-image">
+                        A
+                    </div>
+                    <span>Akin Alade</span>
+                    <br>
+                    <span>Junior marketer</span>
+                </div>
+            </div>
+            <div class="menu box">
+                <button id="createAdmin" class="btn-action" onclick="openModal('newRequestModal')">
+                    <i class="fa fa-plus"></i> New Request</button>
+            </div>
+        </section>
+        <!-- main content-->
+        <section class="main box">
+            <div class="search box">
+                <form>
                     <input class="form-input" type="text" placeholder="search requests">
                     <input class="form-btn btn-action" type="submit" value="search">
-                </div>
-            </form>
-        </div>
-        <div id="requestModal" class="modal">
-            <!-- Modal content -->
-            <div class="form-container card">
-                <span class="fa fa-close close"></span>
-                <form>
-                    <h3 class="text-center">Create new request</h3>
-                    <div class="form-item">
-                        <label>Request Type</label>
-                        <br>
-                        <select class=" form-input form-select" required disabled>
-                            <option value="maintenance">Maintenance</option>
-                        </select>
-                    </div>
-                    <div class="form-item">
-                        <label>Your request</label>
-                        <br>
-                        <textarea class="form-input" required rows="10"></textarea>
-                    </div>
-                    <div class="form-item">
-                        <input class="form-btn btn-action" type="submit" value="Create">
-                    </div>
                 </form>
             </div>
-        </div>
-    </section>
-    <section class="section-request">
-        <div class="request">
-            <div class="section-header done">
-                <h3>Unresolved Requests</h3>
+            <div class="request-board box">
+                <div class="tab">
+                    <button class="btn-action tab-links btn-white active" onclick="displayTabItem(event, 'all')">
+                        <a href="#">All</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'pend')">
+                        <a href="#">Pending</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'appr')">
+                        <a href="#">Approved</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'disappr')">
+                        <a href="#">Disapproved</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'resol')">
+                        <a href="#">Resolved</a>
+                    </button>
+                </div>
+                <div id="all" class="tab-item request-body box show">
+                    <div class="request box-white">
+                        <div class="request-header">
+                            <div class="user">
+                                <div class="info">
+                                    <span class="date">12/13/2018</span>
+                                    <span class="time">2:00pm</span>
+                                </div>
+                            </div>
+                            <div class="status">
+                                Pending
+                            </div>
+                        </div>
+                        <div class="request-content">
+                            <p>
+                                The Air condition in my office only blows hot air. Kindly come over to fix it for me
+                            </p>
+                        </div>
+                    </div>
+                    <div class="request box-white">
+                        <div class="request-header">
+                            <div class="user">
+                                <div class="info">
+                                    <span class="date">12/13/2018</span>
+                                    <span class="time">5:00pm</span>
+                                </div>
+                            </div>
+                            <div class="status">
+                                Disapproved
+                            </div>
+                        </div>
+                        <div class="request-content">
+                            <p>
+                                Please help me to copy and paste some text?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="request box-white">
+                        <div class="request-header">
+                            <div class="user">
+                                <div class="info">
+                                    <span class="date">07/03/2018</span>
+                                    <span class="time">6:00am</span>
+                                </div>
+                            </div>
+                            <div class="status">
+                                Approved
+                            </div>
+                        </div>
+                        <div class="request-content">
+                            <p>
+                                The light in my office keeps blinking. Please help me fix it asap.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="request box-white">
+                        <div class="request-header">
+                            <div class="user">
+                                <div class="info">
+                                    <span class="date">05/07/2018</span>
+                                    <span class="time">9:00am</span>
+                                </div>
+                            </div>
+                            <div class="status">
+                                Resolved
+                            </div>
+                        </div>
+                        <div class="request-content">
+                            <p>
+                                Oops, my computer just crashed while working on an important document. Can you help me with a new one Asap?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="pend" class="tab-item request-body box hide">
+                    <div class="request box-white">
+                        <div class="request-header">
+                            <div class="user">
+                                <div class="info">
+                                    <span class="date">12/13/2018</span>
+                                    <span class="time">2:00pm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="request-content">
+                            <p>
+                                The Air condition in my office only blows hot air. Kindly come over to fix it for me
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="appr" class="tab-item request-body box hide">
+                    <div class="request box-white">
+                        <div class="request-header">
+                            <div class="user">
+                                <div class="info">
+                                    <span class="date">07/03/2018</span>
+                                    <span class="time">6:00am</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="request-content">
+                            <p>
+                                The light in my office keeps blinking. Please help me fix it asap.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="disappr" class="tab-item request-body box hide">
+                    <div class="request box-white">
+                        <div class="request-header">
+                            <div class="user">
+                                <div class="info">
+                                    <span class="date">12/13/2018</span>
+                                    <span class="time">5:00pm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="request-content">
+                            <p>
+                                Please help me to copy and paste some text?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="resol" class="tab-item request-body box hide">
+                    <div class="request box-white">
+                        <div class="request-header">
+                            <div class="user">
+                                <div class="info">
+                                    <span class="date">05/07/2018</span>
+                                    <span class="time">9:00am</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="request-content">
+                            <p>
+                                Oops, my computer just crashed while working on an important document. Can you help me with a new one Asap?
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="unmarked">unmarked</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="approved">Approved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="unmarked">unmarked</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="disapproved">Disapproved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="approved">Approved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="approved">Approved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-        </div>
-        <div class="request">
-            <div class="section-header new">
-                <h3>Resolved Requests</h3>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="resolved">Resolved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="resolved">Resolved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="resolved">Resolved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="resolved">Resolved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-            <div class="request-item">
-                <div class="status">
-                    <span class="resolved">Resolved</span>
-                </div>
-                <div class="details">
-                    <span>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem commodi necessitatibus velit nisi, dolore voluptate
-                        accusantium?
-                    </span>
-                    <br>
-                    <span>-- John Obi</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script src="js/modal.js"></script>
-    <script src="js/dashboard.js"></script>
+        </section>
+    </div>
+    <script src="./js/admin.js"></script>
 </body>
 
 </html>
