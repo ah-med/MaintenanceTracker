@@ -2,9 +2,9 @@
   "name": "maintenancetracker",
   "version": "1.0.0",
   "description": "create and track your maintenance/repair requests",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "nodemon index.js --exec babel-node",
+    "start": "nodemon server/index.js --exec babel-node",
     "test": "set NODE_ENV=test&& nyc --reporter=html --reporter=text mocha --timeout 10000 --recursive --compilers js:babel-register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "npm run test && nyc report --reporter=text-lcov | coveralls"

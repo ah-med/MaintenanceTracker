@@ -1,5 +1,5 @@
 import { Pool } from 'pg';
-import configJson from '../../config/config';
+import configJson from '../config/config';
 
 const env = process.env.NODE_ENV || 'development'; // Use development if no environment is specified
 const config = configJson[env]; // load configuration
