@@ -6,6 +6,8 @@ import user from './routes/user';
 import auth from './routes/auth';
 import request from './routes/request';
 
+import admin from './admin';
+
 const upload = multer();
 const app = express();
 
@@ -26,5 +28,11 @@ app.use('/api/v1/requests', request);
 app.get('/api/v1/', (req, res) => res.status(200).send({
   message: 'Welcome to Maintenance Tracker API. Listening on port 8000'
 }));
+
+// Listen for requests
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  admin.register();
+});
 
 export default app;
