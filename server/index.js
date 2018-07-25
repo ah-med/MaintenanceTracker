@@ -6,8 +6,6 @@ import user from './routes/user';
 import auth from './routes/auth';
 import request from './routes/request';
 
-import admin from './admin';
-
 const upload = multer();
 const app = express();
 
@@ -31,8 +29,6 @@ app.get('/api/v1/', (req, res) => res.status(200).send({
 
 // Listen for requests
 const port = process.env.PORT || 8000;
-app.listen(port, () => {
-  admin.register();
-});
+app.listen(port);
 
 export default app;
