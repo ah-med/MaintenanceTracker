@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import UserModel from '../models/user';
+import UserQuery from '../models/user';
 import AdminModel from '../models/admin';
 
 const { setAdmin } = AdminModel;
@@ -19,11 +19,11 @@ class UserController {
     const { username, email, password } = req.body;
     const { userData } = req;
     const pass = bcrypt.hashSync(password, 10);
-    UserModel.createUser(username, email, pass, (err) => {
+    UserQuery.createUser(username, email, pass, (err) => {
       if (err) {
         return res.status(400).json({
           err: {
-            code: err.code,
+            code: err,
             message: 'user already exist'
           }
         });
@@ -46,7 +46,7 @@ class UserController {
   static loginUser(req, res) {
     const { email, password } = req.body;
     // select user in the database
-    UserModel.loginUser(email, password, (err, result) => {
+    UserQuery.loginUser(email, password, (err, result) => {
       if (result.rowCount === 1) {
         const id = result.rows[0].user_id;
         const { admin } = result.rows[0];

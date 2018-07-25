@@ -1,8 +1,8 @@
 import db from '../db/index';
 
-const UserModel = {
+const UserQuery = {
 
-  createUser: (username, email, password, callback) => {
+  createUser: (data, callback) => {
     const text = 'INSERT INTO users(username, email, password) values($1, $2, $3)';
     const params = [username, email, password];
     db.query(text, params, (err, result) => {
@@ -28,5 +28,5 @@ const UserModel = {
 
 };
 
-export default UserModel;
+export default UserQuery;
 
