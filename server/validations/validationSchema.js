@@ -2,7 +2,7 @@ import Joi from 'joi';
 
 
 const Schema = {
-  signupSchema: {
+  authSchema: {
     username: Joi.string().alphanum().min(3).max(30)
       .required(),
     companyname: Joi.string().alphanum().min(3).max(30)

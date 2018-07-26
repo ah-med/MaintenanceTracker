@@ -20,7 +20,7 @@ class AuthController {
     } = req.body;
     const pass = bcrypt.hashSync(password, 10);
 
-    // Insert into companies database and table database
+    // Insert into companies database and users database
     let text = 'INSERT INTO companies(companyname) values($1) RETURNING companyid';
     let param = [companyname];
     db.query(text, param, (err, result) => {
@@ -60,28 +60,18 @@ class AuthController {
     *@returns {undefined} The return *
     */
   static login(req, res) {
-    const { email, password } = req.body;
-    // select user in the database
-    UserQuery.login(email, password, (err, result) => {
-      if (result.rowCount === 1) {
-        const id = result.rows[0].user_id;
-        const { admin } = result.rows[0];
-        const userData = {
-          id,
-          admin
-        };
-        // Assign token to user for six hours
-        const token = jwt.sign(userData, process.env.SECRET_KEY, { expiresIn: '6h' });
-        // Success message
-        return res.status(200).json({
-          message: 'User logged in successfully',
-          token
-        });
-      }
-      // Details mismatch
-      return res.status(400).json({ message: 'Username/Password Incorrect' });
-    });
-  }
+   // extract token from req.locals
+   const { token } = req.locals;
+   const d = new Date();
+   return res.status(200).json({
+     message: 'Log in successfull',
+     data: {
+       token,
+       createdAt: d,
+       expiresIn: '6hrs'
+     }
+   })
+ }
 }
 
 export default AuthController;
