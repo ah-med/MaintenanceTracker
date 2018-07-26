@@ -29,6 +29,13 @@ const errors = {
       title: 'WRONG PASSWORD',
       description: 'password doesn\'t match'
     }
+  }),
+  unauthorizedError: res => res.status(401).json({
+    error: {
+      status: 401,
+      title: 'UNAUTHOURIZED_ACCESS',
+      description: 'an access token or other authorization credential is required'
+    }
   })
 };
 

@@ -17,5 +17,10 @@ const validateLogin = (req, res, next) => {
   return (errors !== null) ? validationError(res, errors) : next();
 };
 
+const validateNewUser = (req, res, next) => {
+  const data = ['email', 'username', 'password'];
+  const errors = Validator(data, req.body, authSchema);
+  return (errors !== null) ? validationError(res, errors) : next();
+};
 
-export default { validateSignup, validateLogin };
+export default { validateSignup, validateLogin, validateNewUser };

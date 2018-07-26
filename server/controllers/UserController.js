@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import UserQuery from '../models/user';
-import AdminModel from '../models/admin';
+import db from '../db/index';
+import errors from './errors';
 
-const { setAdmin } = AdminModel;
 
 /**
  * @class UserController
@@ -16,24 +16,29 @@ class UserController {
     *@returns {undefined} returns undefined *
     */
   static createUser(req, res) {
-    const { username, email, password } = req.body;
-    const { userData } = req;
+    // extract required informations from req.body
+    const {
+      username, email, password, role, companyname
+    } = req.body;
+    const { companyid } = req.locals;
+
     const pass = bcrypt.hashSync(password, 10);
-    UserQuery.createUser(username, email, pass, (err) => {
-      if (err) {
-        return res.status(400).json({
-          err: {
-            code: err,
-            message: 'user already exist'
-          }
-        });
-      }
-      if (userData && userData.admin === true) {
-        console.log(userData);
-        setAdmin(email);
-      }
+
+    const text = 'INSERT INTO users(companyid, username, email, password, role) values ($1, $2, $3, $4, $5) RETURNING userid';
+    const param = [companyid, username, email, pass, role];
+    db.query(text, param, (err, user) => {
+      if (err) return errors.serverError(res);
+
       return res.status(201).json({
-        message: 'User Registered. Login with your credentials'
+        message: 'Account created successfully',
+        data: {
+          userid: user.rows[0].userid,
+          username,
+          email,
+          companyid,
+          companyname,
+          role
+        }
       });
     });
   }
