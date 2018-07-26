@@ -9,6 +9,13 @@ const Schema = {
       .required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(8).max(10).required()
+  },
+  requestSchema: {
+    details: Joi.string().min(10).max(250)
+      .required(),
+    title: Joi.string().min(10).max(50)
+      .required(),
+    requestId: Joi.number().positive().required(),
   }
 };
 

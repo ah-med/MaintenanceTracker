@@ -26,7 +26,8 @@ const tableSchema = `
     CREATE TABLE "requests" (
         "requestid" serial NOT NULL UNIQUE,
         "userid" integer NOT NULL,
-        "reqtext" TEXT NOT NULL,
+        "reqtitle" TEXT NOT NULL,
+        "reqdetails" TEXT NOT NULL,
         "createdat" TIMESTAMP NOT NULL,
         "lastupdated" TIMESTAMP NOT NULL
     ) WITH (
