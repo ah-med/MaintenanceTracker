@@ -1,3 +1,4 @@
+/*
 import express from 'express';
 import adminController from '../controllers/admin';
 
@@ -11,7 +12,7 @@ const { isPending } = verifyStatus;
 
 const router = express.Router();
 
-/*
+
 // Get all requests in the application
 router.get('/', tokenVerification, isAdmin, adminController.getRequests);
 
@@ -23,5 +24,6 @@ router.put('/:requestId/disapprove', tokenVerification, isAdmin, adminController
 
 // Resolve a request
 router.put('/:requestId/resolve', tokenVerification, isAdmin, adminController.updateStatus);
-*/
+
 export default router;
+*/

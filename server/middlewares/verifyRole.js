@@ -18,5 +18,15 @@ const user = (req, res, next) => {
   next();
 };
 
-export default { admin, user };
+const masterAdmin = (req, res, next) => {
+  const { role } = req.locals;
+
+  if (role !== 'MASTER_ADMIN') {
+    return errors.unauthorizedError(res);
+  }
+
+  next();
+};
+
+export default { admin, user, masterAdmin };
 
