@@ -28,6 +28,7 @@ const tableSchema = `
         "userid" integer NOT NULL,
         "reqtitle" TEXT NOT NULL,
         "reqdetails" TEXT NOT NULL,
+        "status" TEXT NOT NULL DEFAULT 'new',
         "createdat" TIMESTAMP NOT NULL,
         "lastupdated" TIMESTAMP NOT NULL
     ) WITH (

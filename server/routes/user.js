@@ -6,7 +6,7 @@ import requestValidation from '../validations/requestValidation';
 import verifyRole from '../middlewares/verifyRole';
 import verifyRequest from '../middlewares/verifyRequest';
 import checkExistingUser from '../middlewares/checkExistingUser';
-
+import fetchRequestStatus from '../middlewares/fetchRequestStatus';
 import addRequestBody from '../middlewares/addRequestBody';
 import UserController from '../controllers/UserController';
 
@@ -22,10 +22,10 @@ router.post('/', validateNewUser, verifyToken, verifyRole.admin, addCompanyName,
 
 // Create a Request
 router.post('/requests', verifyToken, verifyRole.user, validateRequest, UsersRequestController.createRequest);
-/*
+
 // Modify a Request
-router.put('/requests/:requestId', verifyToken, verifyRole.user, validateRequestId, verifyUserRequestId, fetchRequestStatus, UsersRequestController.modifyRequest);
-*/
+router.put('/requests/:requestId', verifyToken, verifyRole.user, validateRequestId, validateRequest, verifyUserRequestId, fetchRequestStatus, UsersRequestController.modifyRequest);
+
 // Fetch a Request
 router.get('/requests/:requestId', verifyToken, verifyRole.user, validateRequestId, verifyUserRequestId, UsersRequestController.fetchRequest);
 /*

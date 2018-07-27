@@ -79,17 +79,33 @@ class UsersRequestController {
   *@returns {undefined} returns undefined *
   */
   static modifyRequest(req, res) {
+    // get status from req.locals
+    const { currStatus, userid } = req.locals;
+    if (currStatus === 'approved' || currStatus === 'rejected') return errors.forbidden(res, 'cannot modify approved or rejected request');
+
+    // get requestid from req.params
     const { requestId } = req.params;
-    const { userData } = req;
-    const { details } = req.body;
-    modifyRequest(userData.id, requestId, details, (err, result) => {
-      if (result.rowCount === 1) {
-        return res.status(200).json({
-          message: 'Modified successfully'
-        });
-      }
+    const { title, details } = req.body;
+    const d = new Date();
+
+    // modify request in database
+    const text = 'UPDATE requests SET reqtitle=$1, reqdetails=$2, lastupdated=$3 WHERE requestid=$4 and userid=$5 RETURNING *';
+    const params = [title, details, d, requestId, userid];
+    db.query(text, params, (err, data) => {
+      if (err) return errors.serverError(res);
+      const returnData = data.rows[0];
+      return res.status(200).json({
+        message: 'Updated Successfully',
+        data: {
+          userId: userid,
+          requesttId: returnData.requestid,
+          title: returnData.reqtitle,
+          details: returnData.reqdetails,
+          lastupdate: returnData.lastupdated
+        }
+      });
     });
   }
 }
 
-export default UsersRequestController;
+  export default UsersRequestController;
