@@ -37,25 +37,26 @@ class UsersRequestController {
   *@param {object} res The response *.
   *@returns {undefined} returns undefined *
   */
-  static getRequest(req, res) {
-    const { userData } = req;
+  static fetchRequest(req, res) {
     const { requestId } = req.params;
-    getRequest(requestId, userData.id, (err, result) => {
-      if (result.rowCount === 1) {
-        const {
-          type, details, stat
-        } = result.rows[0];
-        return res.status(200).json({
-          request: [{
-            requestId: result.rows[0].req_id,
-            type,
-            details,
-            status: stat
-          }]
-        });
-      }
-      return res.status(404).json({
-        error: 'request not found'
+    const { userid } = req.locals;
+    const text = 'select * from requests where userid=$1 and requestid=$2';
+    const params = [userid, requestId];
+    db.query(text, params, (err, request) => {
+      if (err) return errors.serverError(res);
+      const {
+        requestid, reqtitle, reqdetails, createdat, lastupdated
+      } = request.rows[0];
+      return res.status(200).json({
+        message: 'success',
+        data: {
+          userId: userid,
+          requestId: requestid,
+          title: reqtitle,
+          details: reqdetails,
+          createdAt: createdat,
+          lastUpdated: lastupdated
+        }
       });
     });
   }

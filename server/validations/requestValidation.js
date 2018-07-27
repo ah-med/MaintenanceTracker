@@ -11,5 +11,12 @@ const validateRequest = (req, res, next) => {
   return (errors !== null) ? validationError(res, errors) : next();
 };
 
+const validateRequestId = (req, res, next) => {
+  const data = ['requestId'];
+  const obj = {};
+  obj.requestId = req.params.requestId;
+  const errors = Validator(data, obj, requestSchema);
+  return (errors !== null) ? validationError(res, errors) : next();
+};
 
-export default { validateRequest };
+export default { validateRequest, validateRequestId };
