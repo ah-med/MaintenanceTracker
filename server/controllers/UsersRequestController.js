@@ -45,7 +45,7 @@ class UsersRequestController {
     db.query(text, params, (err, request) => {
       if (err) return errors.serverError(res);
       const {
-        requestid, reqtitle, reqdetails, createdat, lastupdated
+        requestid, reqtitle, reqdetails, status, createdat, lastupdated
       } = request.rows[0];
       return res.status(200).json({
         message: 'success',
@@ -54,6 +54,7 @@ class UsersRequestController {
           requestId: requestid,
           title: reqtitle,
           details: reqdetails,
+          status,
           createdAt: createdat,
           lastUpdated: lastupdated
         }
@@ -66,11 +67,16 @@ class UsersRequestController {
   *@param {object} res The response *.
   *@returns {undefined} returns undefined *
   */
-  static getAllRequests(req, res) {
-    const { userData } = req;
-    getAllRequests(userData.id, (err, result) => res.status(200).json({
-      requests: result.rows
-    }));
+  static fetchAllRequests(req, res) {
+    const { userid } = req.locals;
+
+    db.query('select * from requests where userid=$1', [userid], (err, data) => {
+      if (err) return errors.serverError(res);
+      return res.status(200).json({
+        message: 'success',
+        data: data.rows
+      });
+    });
   }
   /**
   * Modify a Request
@@ -81,7 +87,7 @@ class UsersRequestController {
   static modifyRequest(req, res) {
     // get status from req.locals
     const { currStatus, userid } = req.locals;
-    if (currStatus === 'approved' || currStatus === 'rejected') return errors.forbidden(res, 'cannot modify approved or rejected request');
+    if (currStatus === 'approve' || currStatus === 'disapprove') return errors.forbidden(res, 'cannot modify approved or disapproved request');
 
     // get requestid from req.params
     const { requestId } = req.params;
@@ -101,6 +107,7 @@ class UsersRequestController {
           requesttId: returnData.requestid,
           title: returnData.reqtitle,
           details: returnData.reqdetails,
+          status: returnData.status,
           lastupdate: returnData.lastupdated
         }
       });
@@ -108,4 +115,4 @@ class UsersRequestController {
   }
 }
 
-  export default UsersRequestController;
+export default UsersRequestController;

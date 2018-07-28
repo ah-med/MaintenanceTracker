@@ -6,7 +6,7 @@ import trimmer from 'trim-request-body';
 import user from './routes/user';
 import admin from './routes/admin';
 import auth from './routes/auth';
-// import request from './routes/request';
+import request from './routes/request';
 
 const upload = multer();
 const app = express();
@@ -26,7 +26,7 @@ app.use(trimmer);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', user);
 app.use('/api/v1/admins', admin);
-// app.use('/api/v1/requests', request);
+app.use('/api/v1/requests', request);
 
 // Setup a default route
 app.get('/api/v1/', (req, res) => res.status(200).send({

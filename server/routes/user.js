@@ -28,8 +28,8 @@ router.put('/requests/:requestId', verifyToken, verifyRole.user, validateRequest
 
 // Fetch a Request
 router.get('/requests/:requestId', verifyToken, verifyRole.user, validateRequestId, verifyUserRequestId, UsersRequestController.fetchRequest);
-/*
+
 // Fetch all Requests
-router.get('/requests', verifyToken, RequestController.getAllRequests);
-*/
+router.get('/requests', verifyToken, verifyRole.user, UsersRequestController.fetchAllRequests);
+
 export default router;

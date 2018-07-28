@@ -17,6 +17,19 @@ const verifyUserRequestId = (req, res, next) => {
   });
 };
 
+const verifyRequestId = (req, res, next) => {
+  // get requestId from req.params
+  const { requestId } = req.params;
 
-export default { verifyUserRequestId };
+  // check if requestid exists
+  const text = 'select exists(select * from requests where requestid=$1)';
+  const params = [requestId];
+  db.query(text, params, (err, data) => {
+    if (err) return errors.serverError(res);
+    if (!data.rows[0].exists) return errors.errorNotFound(res);
+    next();
+  });
+};
+
+export default { verifyUserRequestId, verifyRequestId };
 
