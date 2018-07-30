@@ -21,9 +21,12 @@ const verifyRequestId = (req, res, next) => {
   // get requestId from req.params
   const { requestId } = req.params;
 
+  // get companyid from req.locals
+  const { companyid } = req.locals;
+
   // check if requestid exists
-  const text = 'select exists(select * from requests where requestid=$1)';
-  const params = [requestId];
+  const text = 'select exists(select * from requests where requestid=$1 and companyid=$2)';
+  const params = [requestId, companyid];
   db.query(text, params, (err, data) => {
     if (err) return errors.serverError(res);
     if (!data.rows[0].exists) return errors.errorNotFound(res);

@@ -11,7 +11,8 @@ class RequestController {
   *@returns {undefined} returns undefined *
   */
   static fetchAll(req, res) {
-    db.query('select * from requests', (err, data) => {
+    const { companyid } = req.locals;
+    db.query('select * from requests where companyid=$1', [companyid], (err, data) => {
       if (err) return errors.serverError(res);
       return res.status(200).json({
         message: 'success',
@@ -28,12 +29,12 @@ class RequestController {
   */
   static updateStatus(req, res) {
     // get status from request.locals
-    const { status, currStatus } = req.locals;
+    const { status, currStatus, companyid } = req.locals;
     const { requestId } = req.params;
-    console.log(currStatus, status);
+
     // case: current status is pending and new status is approve
     if (currStatus === 'new' && status === 'approve') {
-      db.query('UPDATE requests SET status=$1 WHERE requestid=$2 RETURNING *', [status, requestId], (err, data) => {
+      db.query('UPDATE requests SET status=$1 WHERE requestid=$2 AND companyid=$3 RETURNING *', [status, requestId, companyid], (err, data) => {
         if (err) return errors.serverError(res);
         const returnData = data.rows[0];
         return res.status(200).json({
@@ -49,7 +50,7 @@ class RequestController {
         });
       }); // case: status is approve or disapprove
     } else if (status === 'disapprove' || status === 'resolve') {
-      db.query('UPDATE requests SET status=$1 WHERE requestid=$2 RETURNING *', [status, requestId], (err, data) => {
+      db.query('UPDATE requests SET status=$1 WHERE requestid=$2 AND companyid=$3 RETURNING *', [status, requestId, companyid], (err, data) => {
         if (err) return errors.serverError(res);
         const returnData = data.rows[0];
         return res.status(200).json({

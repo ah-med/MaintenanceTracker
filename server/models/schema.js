@@ -26,6 +26,7 @@ const tableSchema = `
     CREATE TABLE "requests" (
         "requestid" serial NOT NULL UNIQUE,
         "userid" integer NOT NULL,
+        "companyid" integer NOT NULL,
         "reqtitle" TEXT NOT NULL,
         "reqdetails" TEXT NOT NULL,
         "status" TEXT NOT NULL DEFAULT 'new',
@@ -50,6 +51,9 @@ const tableSchema = `
     ALTER TABLE "users" ADD CONSTRAINT "users_fk0" FOREIGN KEY ("companyid") REFERENCES "companies"("companyid");
 
     ALTER TABLE "requests" ADD CONSTRAINT "requests_fk0" FOREIGN KEY ("userid") REFERENCES "users"("userid");
+
+    ALTER TABLE "requests" ADD CONSTRAINT "requests_fk1" FOREIGN KEY ("companyid") REFERENCES "companies"("companyid");
+
 `;
 db.query(tableSchema, (err) => {
   if (err) {

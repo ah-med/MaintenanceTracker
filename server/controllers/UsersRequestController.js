@@ -13,10 +13,10 @@ class UsersRequestController {
     */
   static createRequest(req, res) {
     const { details, title } = req.body;
-    const { userid } = req.locals;
+    const { userid, companyid } = req.locals;
     const createdat = new Date();
-    const params = [userid, title, details, createdat, createdat];
-    const text = 'INSERT INTO requests(userid, reqtitle, reqdetails, createdat, lastupdated) VALUES($1, $2, $3, $4, $5) RETURNING requestid';
+    const params = [userid, companyid, title, details, createdat, createdat];
+    const text = 'INSERT INTO requests(userid, companyid, reqtitle, reqdetails, createdat, lastupdated) VALUES($1, $2, $3, $4, $5, $6) RETURNING requestid';
     db.query(text, params, (err, data) => {
       if (err) return errors.serverError(res);
       return res.status(201).json({
