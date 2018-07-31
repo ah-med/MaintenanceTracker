@@ -6,25 +6,25 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('verifyToken', () => {
-  it('should return 403 error for undefined header', (done) => {
+  it('should return error for undefined header', (done) => {
     chai.request(app)
-      .get('/api/v1/users/requests')
+      .post('/api/v1/admins')
+      .send({ username: 'newCompanyAdmin', email: 'newCompany@mail.com', password: '12345678' })
       .end((err, res) => {
-        expect(res.body).to.have.property('message')
-          .eql('Kindly sign in');
-        expect(res.body).to.have.property('error')
-          .eql(true);
-        expect(res.status).to.equal(403);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.have.property('status');
+        expect(res.body.error).to.have.property('title');
+        expect(res.body.error).to.have.property('description');
+        expect(res.status).to.equal(401);
         done();
       });
   });
-  it('should return 403 error wrong token', (done) => {
+  it('should return error wrong or expired token', (done) => {
     chai.request(app)
       .get('/api/v1/users/requests')
       .set('Authorization', 'wrongtoken')
       .end((err, res) => {
-        expect(res.body).to.have.property('error')
-          .eql('Something is not right. Kindly sign in');
+        expect(res.body).to.have.property('error');
         expect(res.status).to.equal(403);
         done();
       });
