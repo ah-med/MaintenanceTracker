@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="./images/fav.ico">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/user.css">
 </head>
 
 <body>
@@ -33,7 +34,7 @@
                 <input class="form-input" type="password" placeholder="password" required>
             </div>
             <div class="form-item">
-                <input class="form-btn btn-action btn-form" type="submit" value="Create Admin">
+                <input class="create-request-btn form-btn btn-action" type="submit" value="Create Admin">
             </div>
         </form>
     </div>
@@ -63,260 +64,146 @@
                 <input class="form-input" type="password" placeholder="password" required>
             </div>
             <div class="form-item">
-                <input class="form-btn btn-action btn-form" type="submit" value="Add employee">
+                <input class="create-request-btn form-btn btn-action" type="submit" value="Add employee">
             </div>
         </form>
     </div>
+    <div id="viewRequestModal" class="modal hide">
+        <div>
+            <span class="close" onclick="closeModal('viewRequestModal')">&times;</span>
+        </div>
+        <form id="createRequest" class="card box box-white">
+            <div class="form-item">
+                <label>Title</label>
+                <br>
+                <input class="form-input" required disabled></input>
+            </div>
+            <div class="form-item">
+                <label>Description</label>
+                <br>
+                <textarea class="form-input" required rows="10" disabled></textarea>
+            </div>
+            <div class="form-item view-request-btn-group">
+                <input class="create-request-btn form-btn btn-action btn-green" type="submit" value="Accept">
+                <input class="create-request-btn form-btn btn-action btn-red" type="submit" value="Reject">
+            </div>
+        </form>
+    </div>
+    <!-- Top Navigation -->
+    <div class="row top-nav">
+        <div class="logo">
+            <h3>Maintenance Tracker</h3>
+        </div>
+        <div class="nav-links">
+            <a href="./user.html">Home</a>
+            <a class="profile" href="./profile.html">Profile</a>
+            <a href="./index.html" class="btn-action">
+                <i class="fa fa-sign-in"></i> Logout</a>
+        </div>
+    </div>
     <div class="row">
-        <!-- side bar section -->
-        <section class="side-bar box">
-            <div class="profile box">
-                <div class="nav">
-                    <a href="./index.html" class="btn-action btn-white">
-                        <i class="fa fa-sign-in"></i> Logout</a>
-                </div>
-                <div class="user-info">
-                    <div class="user-image">
-                        A
-                    </div>
-                    <span>John Doe</span>
-                    <br>
-                    <span>Maintenace Director</span>
-                </div>
-            </div>
-            <div class="menu box">
-                <button id="createAdmin" class="btn-action btn-white" onclick="openModal('adminModal')">
-                    <i class="fa fa-plus"></i> Create Admin</button>
-                <button class="btn-action" onclick="openModal('employeeModal')">
-                    <i class="fa fa-plus"></i> Add employee</button>
-            </div>
-        </section>
         <!-- main content-->
         <section class="main box">
-            <div class="search box">
-                <form>
-                    <input class="form-input" type="text" placeholder="search requests">
-                    <input class="form-btn btn-action" type="submit" value="search">
-                </form>
+            <div class="user-action-box box">
+                <div>
+                    <button id="createAdmin" class="btn-action btn-white" onclick="openModal('adminModal')">
+                        <i class="fa fa-plus"></i> Create Admin</button>
+                    <button class="btn-action" onclick="openModal('employeeModal')">
+                        <i class="fa fa-plus"></i> Add employee</button>
+                </div>
+                <div class="search">
+                    <form>
+                        <input class="form-input" type="text" placeholder="filter requests by anything">
+                        <input class="form-btn btn-action" type="submit" value="Filter">
+                    </form>
+                </div>
             </div>
-            <div class="request-board box">
+            <div class="request-board shadow">
                 <div class="tab">
                     <button class="btn-action tab-links btn-white active" onclick="displayTabItem(event, 'all')">
                         <a href="#">All</a>
                     </button>
                     <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'pend')">
-                        <a href="#">Pending</a>
+                        <a href="#">New</a>
                     </button>
                     <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'appr')">
-                        <a href="#">Approved</a>
+                        <a href="#">Accepted</a>
                     </button>
                     <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'disappr')">
-                        <a href="#">Disapproved</a>
+                        <a href="#">Rejected</a>
                     </button>
                     <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'resol')">
                         <a href="#">Resolved</a>
                     </button>
                 </div>
-                <div id="all" class="tab-item request-body box show">
-                    <div class="request box-white">
-                        <div class="set-status">
-                            <span>---</span>
-                        </div>
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="user-image">
-                                    J
-                                </div>
-                                <div class="info">
-                                    <span class="user-name">John doe</span>
-                                    <br>
-                                    <span class="date">12/13/2018</span>
-                                    <span class="time">2:00pm</span>
-                                </div>
-                            </div>
-                            <div class="status">
-                                Pending
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                The Air condition in my office only blows hot air. Kindly come over to fix it for me
-                            </p>
-                        </div>
-                    </div>
-                    <div class="request box-white">
-                        <div class="set-status">
-                            <span>---</span>
-                        </div>
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="user-image">
-                                    C
-                                </div>
-                                <div class="info">
-                                    <span class="user-name">Charles Uhro</span>
-                                    <br>
-                                    <span class="date">12/13/2018</span>
-                                    <span class="time">2:00pm</span>
-                                </div>
-                            </div>
-                            <div class="status">
-                                Disapproved
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                Please help me to copy and paste some text?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="request box-white">
-                        <div class="set-status">
-                            <span>---</span>
-                        </div>
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="user-image">
-                                    B
-                                </div>
-                                <div class="info">
-                                    <span class="user-name">Baker Lawn</span>
-                                    <br>
-                                    <span class="date">07/03/2018</span>
-                                    <span class="time">6:00am</span>
-                                </div>
-                            </div>
-                            <div class="status">
-                                Approved
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                The light in my office keeps blinking. Please help me fix it asap.
+                <div id="all" class="tab-item request-body shadow show">
+                    <table>
 
-                            </p>
-                        </div>
-                    </div>
-                    <div class="request box-white">
-                        <div class="set-status">
-                            <span>---</span>
-                        </div>
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="user-image">
-                                    H
-                                </div>
-                                <div class="info">
-                                    <span class="user-name">Hanna Kendrick</span>
-                                    <br>
-                                    <span class="date">05/07/2018</span>
-                                    <span class="time">9:00am</span>
-                                </div>
-                            </div>
-                            <div class="status">
-                                Resolved
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                Oops, my computer just crashed while working on an important document. Can you help me with a new one Asap?
-                            </p>
-                        </div>
-                    </div>
+                        <thead>
+                            <tr>
+                                <th class="sn">S/N</th>
+                                <th class="id">Request ID</th>
+                                <th class="title">Title</th>
+                                <th class="des">Description</th>
+                                <th class="stat">status</th>
+                                <th class="date">CreatedAt</th>
+                                <th class="date">LastUpdate</th>
+                                <th class="act">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>101</td>
+                                <td>My Pc just crashed</td>
+                                <!--  all of a sudden it showed a blank
+                                        blue screen. It has been like this even after several attempt to reboot my laptop. -->
+                                <td>My pc was working fine and all was trail blazing untill ... </td>
+                                <td>new</td>
+                                <td>2018-16-05</td>
+                                <td>2018-16-05</td>
+                                <td>
+                                    <button class="btn-action btn-white edit-btn" onclick="openModal('viewRequestModal')">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>284</td>
+                                <td>The AC at reception is faulty</td>
+                                <td>The standing AC at the reception seems not to be working fine. I notice that it only blows
+                                    hot air...</td>
+                                <td>accepted</td>
+                                <td>2018-16-05</td>
+                                <td>2018-16-05</td>
+                                <td>
+                                    <button class="btn-action btn-white edit-btn" onclick="openModal('viewRequestModal')">View</button>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>284</td>
+                                <td>System repairs</td>
+                                <td>A new request about system that needs quick repair</td>
+                                <td>rejected</td>
+                                <td>2018-16-05</td>
+                                <td>2018-16-05</td>
+                                <td>
+                                    <button class="btn-action btn-white edit-btn" onclick="openModal('viewRequestModal')">View</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
                 <div id="pend" class="tab-item request-body box hide">
-                    <div class="request box-white">
-                        <div class="set-status">
-                            <span>---</span>
-                        </div>
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="user-image">
-                                    J
-                                </div>
-                                <div class="info">
-                                    <span class="user-name">John doe</span>
-                                    <br>
-                                    <span class="date">12/13/2018</span>
-                                    <span class="time">2:00pm</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                The Air condition in my office only blows hot air. Kindly come over to fix it for me
-                            </p>
-                        </div>
-                    </div>
                 </div>
                 <div id="appr" class="tab-item request-body box hide">
-                    <div class="request box-white">
-                        <div class="set-status">
-                            <span>---</span>
-                        </div>
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="user-image">
-                                    B
-                                </div>
-                                <div class="info">
-                                    <span class="user-name">Baker Lawn</span>
-                                    <br>
-                                    <span class="date">07/03/2018</span>
-                                    <span class="time">6:00am</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                The light in my office keeps blinking. Please help me fix it asap.
-                            </p>
-                        </div>
-                    </div>
                 </div>
                 <div id="disappr" class="tab-item request-body box hide">
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="user-image">
-                                    C
-                                </div>
-                                <div class="info">
-                                    <span class="user-name">Charles Uhro</span>
-                                    <br>
-                                    <span class="date">12/13/2018</span>
-                                    <span class="time">2:00pm</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                Please help me to copy and paste some text?
-                            </p>
-                        </div>
-                    </div>
                 </div>
                 <div id="resol" class="tab-item request-body box hide">
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="user-image">
-                                    H
-                                </div>
-                                <div class="info">
-                                    <span class="user-name">Hanna Kendrick</span>
-                                    <br>
-                                    <span class="date">05/07/2018</span>
-                                    <span class="time">9:00am</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                Oops, my computer just crashed while working on an important document. Can you help me with a new one Asap?
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

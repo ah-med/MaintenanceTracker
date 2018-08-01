@@ -1,6 +1,21 @@
 * {
     box-sizing: border-box;
 }
+.top-nav {
+    background-color:#35475E;
+}
+.logo {
+    width: 50%;
+    padding-left: 20px;
+}
+.nav-links {
+    width: 50%;
+    padding: 20px 0 20px 380px;
+}
+.nav-links a {
+   margin-left:30px;
+   color: #fff;
+}
 a {
     text-decoration: none;
 }

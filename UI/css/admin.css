@@ -15,6 +15,14 @@ body {
 .box-white {
     border: 1px solid #fff;
 }
+.btn-red {
+    background-color: rgb(221, 47, 47);
+    cursor: pointer;
+}
+.btn-green {
+    background-color: rgb(28, 184, 28);
+    cursor: pointer;
+}
 /* Requests tabs */
 .active {
     background-color: #75747438;    
@@ -109,6 +117,14 @@ body {
 }
 .request-header .status {
     width: 50%;
+}
+.view-request-btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.view-request-btn-group .form-btn{
+    width: 40%;
 }
 .status {
     padding-left: 40%;
