@@ -111,3 +111,52 @@ img {
 .text-center {
     text-align: center;
 }
+
+/* alert boxes */
+.alert {
+    padding: 20px;
+    color: white;
+    margin: 30px auto;
+  	transition: all 5s ease-out;
+}
+#alert-success {
+    background-color: #6BBD6E;
+}
+#alert-info {
+    background-color:#47A8F5;
+}
+#alert-danger {
+    background-color: #f44336;
+}
+#alert-warning {
+    background-color:#FFAA2C;
+}
+.closealert {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closealert:hover {
+    color: black;
+}
+.show {
+	display: block;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.visuallyhidden {
+  opacity: 0;
+}
+.visuallyshown {
+  opacity: 1;
+}
