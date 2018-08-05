@@ -9,7 +9,7 @@ body {
 
 .box {
     background-color: rgba(0, 0, 0, 0.3);
-    padding: 30px;
+    padding: 0 30px 30px 30px;
     border: 1px solid orangered;
 }
 .box-white {
@@ -44,6 +44,7 @@ body {
 .row {  
     display: flex;
     flex-wrap: wrap;
+    padding-top: 0;
 }
 
 /* Create two unequal columns that sits next to each other */

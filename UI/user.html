@@ -29,29 +29,41 @@
                 <textarea class="form-input" required rows="10"></textarea>
             </div>
             <div class="form-item">
-                <input id='submitRequest' onclick="displayAlert('alert-info', 'Request Created Successfully')" class="create-request-btn form-btn btn-action" type="submit" value="Submit">
+                <input id='submitRequest' onclick="displayAlert('alert-info', 'Request Created Successfully')" class="create-request-btn form-btn btn-action"
+                    type="submit" value="Submit">
             </div>
         </form>
     </div>
     <!-- Top Navigation -->
     <div class="row top-nav">
         <div class="logo">
-            <h3>Maintenance Tracker | Company Name</h3>
+            <span>Maintenance Tracker | Company Name</span>
         </div>
         <div class="nav-links">
-            <a href="./user.html">Home</a>
-            <a class="profile" href="./profile.html">Profile</a>
-            <a href="./index.html" class="btn-action btn-blue">
-                <i class="fa fa-sign-in"></i> Logout</a>
+            <div class="user">
+                <img src='./images/female-avatar.png'>
+                <div class="user-content">
+                    <a href="#">Firstname Lastname</a>
+                    <a href="#">Department</a>
+                    <a href="./index.html">
+                        <i class="fa fa-sign-out"></i> Logout</a>
+                </div>
+            </div>
+            <div>
+                <a class="profile" href="./profile.html">Profile</a>
+            </div>
+            <div>
+                <a href="./user.html">Home</a>
+            </div>
         </div>
     </div>
     <!-- Alert Boxes -->
     <div class="row">
-            <div id="alert-success" class="alert hidden visuallyhidden"></div>
-            <div id="alert-info" class="alert hidden visuallyhidden"></div>
-            <div id="alert-warning" class="alert hidden visuallyhidden"></div>
-            <div id="alert-danger" class="alert hidden visuallyhidden"></div>
-    </div> 
+        <div id="alert-success" class="alert hidden visuallyhidden"></div>
+        <div id="alert-info" class="alert hidden visuallyhidden"></div>
+        <div id="alert-warning" class="alert hidden visuallyhidden"></div>
+        <div id="alert-danger" class="alert hidden visuallyhidden"></div>
+    </div>
     <div class="row">
         <!-- main content-->
         <section class="main box">

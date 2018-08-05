@@ -27,7 +27,7 @@ body {
 .box {
     background-color: inherit;
     border: none;
-    padding: 30px;
+    padding: 15px 30px 30px 30px;
 }
 .box-white {
     border: 1px solid #fff;
