@@ -4,11 +4,12 @@
   "description": "create and track your maintenance/repair requests",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon server/index.js --exec babel-node",
+    "start": "cd server && nodemon index.js --exec babel-node",
     "test": "set NODE_ENV=test&& npm run migrate && nyc --reporter=html --reporter=text mocha --timeout 10000 --recursive --compilers js:babel-register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "npm run test && nyc report --reporter=text-lcov | coveralls",
-    "migrate": "babel-node server/models/schema.js"
+    "migrate": "babel-node server/models/schema.js",
+    "heroku-postbuild": "npm run migrate"
   },
   "engines": {
     "node": "8.9.4"
@@ -28,6 +29,7 @@
     "body-parser": "^1.18.3",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
+    "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "joi": "^13.4.0",

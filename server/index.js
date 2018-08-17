@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import multer from 'multer';
+import cors from 'cors';
 import trimmer from 'trim-request-body';
 
 import user from './routes/user';
@@ -10,6 +11,12 @@ import request from './routes/request';
 
 const upload = multer();
 const app = express();
+const port = process.env.PORT || 8000;
+
+app.use(express.static('../public'));
+
+// allow cross origin access
+app.use(cors());
 
 // parsing application/json
 app.use(bodyParser.json());
@@ -29,12 +36,11 @@ app.use('/api/v1/admins', admin);
 app.use('/api/v1/requests', request);
 
 // Setup a default route
-app.get('/api/v1/', (req, res) => res.status(200).send({
+app.get('/', (req, res) => res.status(200).send({
   message: 'Welcome to Maintenance Tracker API. Listening on port 8000'
 }));
 
 // Listen for requests
-const port = process.env.PORT || 8000;
 app.listen(port);
 
 export default app;
