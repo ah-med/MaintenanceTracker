@@ -13,7 +13,7 @@ const upload = multer();
 const app = express();
 const port = process.env.PORT || 8000;
 
-app.use(express.static('../public'));
+app.use(express.static('./public'));
 
 // allow cross origin access
 app.use(cors());
