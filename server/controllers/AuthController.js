@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import db from '../db/index';
+import db from '../models/index';
 import errors from './errors';
 
 /**

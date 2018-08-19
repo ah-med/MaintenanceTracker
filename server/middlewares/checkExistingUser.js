@@ -1,4 +1,4 @@
-import db from '../db/index';
+import db from '../models/index';
 import errors from '../controllers/errors';
 
 const checkExistingUser = (req, res, next) => {

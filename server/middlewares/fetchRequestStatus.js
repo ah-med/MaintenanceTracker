@@ -1,5 +1,5 @@
 import errors from '../controllers/errors';
-import db from '../db/index';
+import db from '../models/index';
 
 const fetchRequestStatus = (req, res, next) => {
   // get requestId from req.params

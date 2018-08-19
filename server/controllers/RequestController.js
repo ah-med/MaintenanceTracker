@@ -1,5 +1,5 @@
 import errors from './errors';
-import db from '../db/index';
+import db from '../models/index';
 /**
  * @class RequestController
  */
