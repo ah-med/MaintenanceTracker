@@ -1,4 +1,4 @@
-import db from '../db/index';
+import db from './index';
 
 const tableSchema = `
     DROP TABLE IF EXISTS users CASCADE;
