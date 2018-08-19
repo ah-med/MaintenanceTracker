@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+}
+
+.box {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0 30px 30px 30px;
+    border: 1px solid orangered;
+}
+.box-white {
+    border: 1px solid #fff;
+}
+.btn-red {
+    background-color: rgb(221, 47, 47);
+    cursor: pointer;
+}
+.btn-green {
+    background-color: rgb(28, 184, 28);
+    cursor: pointer;
+}
+/* Requests tabs */
+.active {
+    background-color: #75747438;    
+}
+.tab {
+    background-color: white;
+}
+.tab button {
+    display: inline-block;
+    padding: 10px;
+    margin:0;
+}
+.tab button:hover {
+    background-color: #b4b4b45d;
+}
+
+
+/* Column container */
+.row {  
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 0;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side-bar {
+    flex: 30%;
+    background-color: #f1f18c;
+    padding: 20px;
+}
+
+/* Main column */
+.main {
+    flex: 70%;
+    background-color: rgb(189, 231, 112);
+    padding: 20px;
+}
+
+/* dummy user image */
+.user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    font-size: 24px;
+    text-align: center;
+    color: black;
+    padding-top: 9px;
+    margin-bottom: 10px;
+}
+
+/* profile nav */
+.nav .btn-white {
+    position: relative;
+    margin: 10px 0;
+    left: 75%;
+    padding: 3px;
+}
+
+/* search */
+.search {
+    width: 100%;
+}
+.search form {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+.search .form-btn {
+    width: 20%;
+}
+.search form .form-input {
+    width: 80%;
+}
+/* requests */
+.request {
+    margin-top: 30px;
+}
+.request:first-child {
+    margin-top: 0;
+}
+.request-header, .request-content {
+    padding:10px;
+}
+.request-header {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #fff;
+}
+.request-header .user {
+    width: 50%;
+}
+.request-header .status {
+    width: 50%;
+}
+.view-request-btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.view-request-btn-group .form-btn{
+    width: 40%;
+}
+.status {
+    padding-left: 40%;
+    margin-right: 5px;
+    padding-top: 10px;
+}
+.set-status {
+    padding-left: 92.5%;
+}
+.set-status span {
+    font-size:20px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.user {
+    display:flex;
+}
+.user .user-image {
+    margin-right: 20px;
+}
+.user .info {
+    width: 70%;
+    padding-top: 10px;
+}
+
+
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
