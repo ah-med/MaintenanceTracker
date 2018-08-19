@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <section id="home-intro">
+        <div class="nav">
+            <button class="btn-action btn-form" onclick="toggleForms('login')">
+                <i class="fa fa-sign-in"></i> Login</button>
+        </div>
+        <div class="row">
+            <div class="intro">
+                <div class="box">
+                    <div class="intro-text">
+                        <h1> Maintenance Tracker </h1>
+                        <p>Make your request and monitor its status</p>
+                    </div>
+                    <div class="action">
+                        <button class="btn-action btn-white" onclick="toggleDisplay('learn-more')">
+                            <i class="fa fa-info-circle"></i> Learn more</button>
+                        <button class="btn-action" onclick="toggleForms('signup')">
+                            <i class="fa fa-play-circle"></i> Get started</button>
+                    </div>
+                </div>
+                <div id="learn-more" class="text">
+                    <p>
+                        We believe that faster maintenance/repair activity cycle in an organisation will improve the overall effeciency of the employees
+                        in an organisation. Maintenance Tracker app allows employees to make a request about their repair
+                        and maintenance needs and a maintenance officer can update the status of the request.
+                    </p>
+                    <p>
+                        An employee creates a request and a maintenance officer responds to the request by updating its status, request can be marked
+                        as: approved, rejected or resolved
+                    </p>
+                </div>
+            </div>
+            <div class="form-box">
+                <div id="loader" class="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <form id="login" class="login-form box card hide">
+                    <div id="alert-success" class="alert hidden"></div>
+                    <div class="form-item">
+                        <label>Email</label>
+                        <br>
+                        <input id="login-email" class="form-input" type="email" placeholder="email" required>
+                    </div>
+                    <div class="form-item">
+                        <label>Password</label>
+                        <br>
+                        <input id="login-password" class="form-input" type="password" placeholder="password" required>
+                    </div>
+                    <div class="form-item">
+                        <input id="submit-login" class="form-btn btn-action" type="submit" value="Login">
+                    </div>
+                    <div id="login-warning" class="alert danger hidden"></div>
+                </form>
+                <form id="signup" class="sigup-form card box hide">
+                    <div id="signup-warning" class="alert danger hidden"></div>
+                    <div class="form-item">
+                        <label>Username</label>
+                        <br>
+                        <input id="signup-username" class="form-input" type="text" placeholder="username" required>
+                    </div>
+                    <div class="form-item">
+                        <label>Company name</label>
+                        <br>
+                        <input id="signup-companyname" class="form-input" type="text" placeholder="company name" required>
+                    </div>
+                    <div class="form-item">
+                        <label>Email</label>
+                        <br>
+                        <input id="signup-email" class="form-input" type="email" placeholder="mail@company.com" required>
+                    </div>
+                    <div class="form-item">
+                        <label>Password</label>
+                        <br>
+                        <input id="signup-password" class="form-input" type="password" placeholder="password" required>
+                    </div>
+                    <div class="form-item">
+                        <input id="submit-signup" class="form-btn btn-action" type="submit" value="Create Account">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script src="./js/index.js"></script>
+    <script src="./js/fetchSignup.js"></script>
+    <script src="./js/fetchLogin.js"></script>
+</body>
+
+</html>
