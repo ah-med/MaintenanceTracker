@@ -35,11 +35,6 @@ app.use('/api/v1/users', user);
 app.use('/api/v1/admins', admin);
 app.use('/api/v1/requests', request);
 
-// Setup a default route
-app.get('/', (req, res) => res.status(200).send({
-  message: 'Welcome to Maintenance Tracker API. Listening on port 8000'
-}));
-
 // Listen for requests
 app.listen(port);
 
