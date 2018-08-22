@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="./images/fav.ico">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/user.css">
 </head>
 
 <body>
@@ -16,206 +17,160 @@
         <div>
             <span class="close" onclick="closeModal('newRequestModal')">&times;</span>
         </div>
-        <form id="createRequest" class="sigup-form card box box-white">
+        <form id="createRequest" class="card box box-white">
             <div class="form-item">
-                <label>Your request</label>
+                <label>Title</label>
+                <br>
+                <input class="form-input" required rows="10"></input>
+            </div>
+            <div class="form-item">
+                <label>Description</label>
                 <br>
                 <textarea class="form-input" required rows="10"></textarea>
             </div>
             <div class="form-item">
-                <input class="form-btn btn-action" type="submit" value="Create">
+                <input id='submitRequest' onclick="displayAlert('alert-info', 'Request Created Successfully')" class="create-request-btn form-btn btn-action"
+                    type="submit" value="Submit">
             </div>
         </form>
     </div>
+    <!-- Top Navigation -->
+    <div class="row top-nav">
+        <div class="logo">
+            <span>Maintenance Tracker | Company Name</span>
+        </div>
+        <div class="nav-links">
+            <div class="user">
+                <img src='./images/female-avatar.png'>
+                <div class="user-content">
+                    <a href="#">Firstname Lastname</a>
+                    <a href="#">Department</a>
+                    <a href="./index.html">
+                        <i class="fa fa-sign-out"></i> Logout</a>
+                </div>
+            </div>
+            <div>
+                <a class="profile" href="./profile.html">Profile</a>
+            </div>
+            <div>
+                <a href="./user.html">Home</a>
+            </div>
+        </div>
+    </div>
+    <!-- Alert Boxes -->
     <div class="row">
-        <!-- side bar section -->
-        <section class="side-bar box">
-            <div class="profile box">
-                <div class="nav">
-                    <a href="./index.html" class="btn-action btn-white">
-                        <i class="fa fa-sign-in"></i> Logout</a>
-                </div>
-                <div class="user-info">
-                    <div class="user-image">
-                        A
-                    </div>
-                    <span>Akin Alade</span>
-                    <br>
-                    <span>Junior marketer</span>
-                </div>
-            </div>
-            <div class="menu box">
-                <button id="createAdmin" class="btn-action" onclick="openModal('newRequestModal')">
-                    <i class="fa fa-plus"></i> New Request</button>
-            </div>
-        </section>
+        <div id="alert-success" class="alert hidden visuallyhidden"></div>
+        <div id="alert-info" class="alert hidden visuallyhidden"></div>
+        <div id="alert-warning" class="alert hidden visuallyhidden"></div>
+        <div id="alert-danger" class="alert hidden visuallyhidden"></div>
+    </div>
+    <div class="row">
         <!-- main content-->
         <section class="main box">
-            <div class="search box">
-                <form>
-                    <input class="form-input" type="text" placeholder="search requests">
-                    <input class="form-btn btn-action" type="submit" value="search">
-                </form>
+            <div class="user-action-box box">
+                <div>
+                    <button id="createAdmin" class="btn-action" onclick="openModal('newRequestModal')">
+                        <i class="fa fa-plus"></i> New Request</button>
+                </div>
+                <div class="search">
+                    <form>
+                        <input class="form-input" type="text" placeholder="filter requests by anything">
+                        <input class="form-btn btn-action" type="submit" value="Filter">
+                    </form>
+                </div>
             </div>
-            <div class="request-board box">
+            <div class="request-board shadow">
                 <div class="tab">
                     <button class="btn-action tab-links btn-white active" onclick="displayTabItem(event, 'all')">
                         <a href="#">All</a>
                     </button>
                     <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'pend')">
-                        <a href="#">Pending</a>
+                        <a href="#">New</a>
                     </button>
                     <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'appr')">
-                        <a href="#">Approved</a>
+                        <a href="#">Accepted</a>
                     </button>
                     <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'disappr')">
-                        <a href="#">Disapproved</a>
+                        <a href="#">Rejected</a>
                     </button>
                     <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'resol')">
                         <a href="#">Resolved</a>
                     </button>
                 </div>
-                <div id="all" class="tab-item request-body box show">
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="info">
-                                    <span class="date">12/13/2018</span>
-                                    <span class="time">2:00pm</span>
-                                </div>
-                            </div>
-                            <div class="status">
-                                Pending
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                The Air condition in my office only blows hot air. Kindly come over to fix it for me
-                            </p>
-                        </div>
-                    </div>
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="info">
-                                    <span class="date">12/13/2018</span>
-                                    <span class="time">5:00pm</span>
-                                </div>
-                            </div>
-                            <div class="status">
-                                Disapproved
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                Please help me to copy and paste some text?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="info">
-                                    <span class="date">07/03/2018</span>
-                                    <span class="time">6:00am</span>
-                                </div>
-                            </div>
-                            <div class="status">
-                                Approved
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                The light in my office keeps blinking. Please help me fix it asap.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="info">
-                                    <span class="date">05/07/2018</span>
-                                    <span class="time">9:00am</span>
-                                </div>
-                            </div>
-                            <div class="status">
-                                Resolved
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                Oops, my computer just crashed while working on an important document. Can you help me with a new one Asap?
-                            </p>
-                        </div>
-                    </div>
+                <div id="all" class="tab-item request-body shadow show">
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th class="sn">S/N</th>
+                                <th class="id">Request ID</th>
+                                <th class="title">Title</th>
+                                <th class="des">Description</th>
+                                <th class="stat">status</th>
+                                <th class="date">CreatedAt</th>
+                                <th class="date">LastUpdate</th>
+                                <th class="act">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>101</td>
+                                <td>My Pc just crashed</td>
+                                <!--  all of a sudden it showed a blank
+                                    blue screen. It has been like this even after several attempt to reboot my laptop. -->
+                                <td>My pc was working fine and all was trail blazing untill ... </td>
+                                <td>accepted</td>
+                                <td>2018-16-05</td>
+                                <td>2018-16-05</td>
+                                <td>
+                                    <a href="">
+                                        <button class="btn-action btn-white edit-btn" onclick=" ">Edit</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>284</td>
+                                <td>The AC at reception is faulty</td>
+                                <td>The standing AC at the reception seems not to be working fine. I notice that it only blows
+                                    hot air...</td>
+                                <td>rejected</td>
+                                <td>2018-16-05</td>
+                                <td>2018-16-05</td>
+                                <td>
+                                    <a href="">
+                                        <button class="btn-action btn-white edit-btn" onclick=" ">Edit</button>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>284</td>
+                                <td>System repairs</td>
+                                <td>A new request about system that needs quick repair</td>
+                                <td>new</td>
+                                <td>2018-16-05</td>
+                                <td>2018-16-05</td>
+                                <td>
+                                    <a href="">
+                                        <button class="btn-action btn-white edit-btn" onclick=" ">Edit</button>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
                 <div id="pend" class="tab-item request-body box hide">
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="info">
-                                    <span class="date">12/13/2018</span>
-                                    <span class="time">2:00pm</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                The Air condition in my office only blows hot air. Kindly come over to fix it for me
-                            </p>
-                        </div>
-                    </div>
                 </div>
                 <div id="appr" class="tab-item request-body box hide">
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="info">
-                                    <span class="date">07/03/2018</span>
-                                    <span class="time">6:00am</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                The light in my office keeps blinking. Please help me fix it asap.
-                            </p>
-                        </div>
-                    </div>
                 </div>
                 <div id="disappr" class="tab-item request-body box hide">
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="info">
-                                    <span class="date">12/13/2018</span>
-                                    <span class="time">5:00pm</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                Please help me to copy and paste some text?
-                            </p>
-                        </div>
-                    </div>
                 </div>
                 <div id="resol" class="tab-item request-body box hide">
-                    <div class="request box-white">
-                        <div class="request-header">
-                            <div class="user">
-                                <div class="info">
-                                    <span class="date">05/07/2018</span>
-                                    <span class="time">9:00am</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="request-content">
-                            <p>
-                                Oops, my computer just crashed while working on an important document. Can you help me with a new one Asap?
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

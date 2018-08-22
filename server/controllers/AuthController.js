@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import UserQuery from '../models/user';
-import db from '../db/index';
+import db from '../models/index';
+import errors from './errors';
 
 /**
  * @class AuthController
@@ -16,38 +15,27 @@ class AuthController {
   static signUp(req, res) {
     // extract required informations from req.body
     const {
-      username, email, password, companyname
+      username, email, password, companyname, role
     } = req.body;
     const pass = bcrypt.hashSync(password, 10);
 
-    // Insert into companies database and table database
+    // Insert into companies database and users database
     let text = 'INSERT INTO companies(companyname) values($1) RETURNING companyid';
     let param = [companyname];
     db.query(text, param, (err, result) => {
-      if (err) {
-        throw err;
-      }
+      if (err) return errors.serverError(res);
       text = 'INSERT INTO users(companyid, username, email, password, role) values ($1, $2, $3, $4, $5) RETURNING userid';
-      param = [result.rows[0].companyid, username, email, pass, 'MASTER_ADMIN'];
+      param = [result.rows[0].companyid, username, email, pass, role];
       db.query(text, param, (err, user) => {
-        if (err) {
-          return res.status(500).json({
-            error: {
-              err,
-              status: 500,
-              title: 'INTERNAL_SERVER_ERROR',
-              description: 'something unexpected occured. try again later'
-            }
-          });
-        }
+        if (err) return errors.serverError(res);
         return res.status(201).json({
-          message: 'Acccount created successfully',
+          message: 'Account created successfully',
           data: {
             userid: user.rows[0].userid,
             username,
             email,
             companyname,
-            role: 'MASTER_ADMIN'
+            role
           }
         });
       });
@@ -60,26 +48,16 @@ class AuthController {
     *@returns {undefined} The return *
     */
   static login(req, res) {
-    const { email, password } = req.body;
-    // select user in the database
-    UserQuery.login(email, password, (err, result) => {
-      if (result.rowCount === 1) {
-        const id = result.rows[0].user_id;
-        const { admin } = result.rows[0];
-        const userData = {
-          id,
-          admin
-        };
-        // Assign token to user for six hours
-        const token = jwt.sign(userData, process.env.SECRET_KEY, { expiresIn: '6h' });
-        // Success message
-        return res.status(200).json({
-          message: 'User logged in successfully',
-          token
-        });
+    // extract token from req.locals
+    const { token } = req.locals;
+    const d = new Date();
+    return res.status(200).json({
+      message: 'Log in successfull',
+      data: {
+        token,
+        createdAt: d,
+        expiresIn: '6hrs'
       }
-      // Details mismatch
-      return res.status(400).json({ message: 'Username/Password Incorrect' });
     });
   }
 }

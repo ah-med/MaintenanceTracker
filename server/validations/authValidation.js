@@ -1,36 +1,26 @@
-import Joi from 'joi';
 import Schema from './validationSchema';
+import Validator from './validator';
+import Errors from '../controllers/errors';
 
-const { signupSchema } = Schema;
-
+const { authSchema } = Schema;
+const { validationError } = Errors;
 
 const validateSignup = (req, res, next) => {
   const data = ['email', 'username', 'password', 'companyname'];
-
-  const errObj = {};
-  let isError = false;
-  data.forEach((val) => {
-    const obj = {};
-    obj[val] = req.body[val];
-    const { error } = Joi.validate({ val: obj[val] }, { val: signupSchema[val] });
-    if (error !== null) {
-      isError = true;
-      errObj[val] = error.details[0].message.replace('"val"', val);
-    }
-  });
-  if (isError) {
-    return res.status(422).json({
-      error: {
-        status: 422,
-        title: 'FIELDS_VALIDATION_ERROR',
-        description: 'one or more field raised validation error',
-        fields: errObj
-      }
-    });
-  }
-  next();
+  const errors = Validator(data, req.body, authSchema);
+  return (errors !== null) ? validationError(res, errors) : next();
 };
 
+const validateLogin = (req, res, next) => {
+  const data = ['email', 'password'];
+  const errors = Validator(data, req.body, authSchema);
+  return (errors !== null) ? validationError(res, errors) : next();
+};
 
-export default validateSignup;
+const validateNewUser = (req, res, next) => {
+  const data = ['email', 'username', 'password'];
+  const errors = Validator(data, req.body, authSchema);
+  return (errors !== null) ? validationError(res, errors) : next();
+};
 
+export default { validateSignup, validateLogin, validateNewUser };

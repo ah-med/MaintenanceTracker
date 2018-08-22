@@ -1,26 +1,29 @@
 import express from 'express';
-import adminController from '../controllers/admin';
-
+import RequestController from '../controllers/RequestController';
 import verifyToken from '../middlewares/verifyToken';
-import verifyAdmin from '../middlewares/verifyAdmin';
-import verifyStatus from '../middlewares/verifyStatus';
+import requestValidation from '../validations/requestValidation';
+import verifyRole from '../middlewares/verifyRole';
+import verifyRequest from '../middlewares/verifyRequest';
+import fetchRequestStatus from '../middlewares/fetchRequestStatus';
+import assignRequestStatus from '../middlewares/assignRequestStatus';
 
-const { tokenVerification } = verifyToken;
-const { isAdmin } = verifyAdmin;
-const { isPending } = verifyStatus;
+
+const { validateRequestId } = requestValidation;
+const { verifyRequestId } = verifyRequest;
 
 const router = express.Router();
 
+
 // Get all requests in the application
-router.get('/', tokenVerification, isAdmin, adminController.getRequests);
+router.get('/', verifyToken, verifyRole.admin, RequestController.fetchAll);
 
 // Approve a request
-router.put('/:requestId/approve', tokenVerification, isAdmin, isPending, adminController.updateStatus);
+router.put('/:requestId/approve', verifyToken, verifyRole.admin, validateRequestId, verifyRequestId, assignRequestStatus.approve, fetchRequestStatus, RequestController.updateStatus);
 
 // Disapprove a request
-router.put('/:requestId/disapprove', tokenVerification, isAdmin, adminController.updateStatus);
+router.put('/:requestId/disapprove', verifyToken, verifyRole.admin, validateRequestId, verifyRequestId, assignRequestStatus.disapprove, fetchRequestStatus, RequestController.updateStatus);
 
 // Resolve a request
-router.put('/:requestId/resolve', tokenVerification, isAdmin, adminController.updateStatus);
+router.put('/:requestId/resolve', verifyToken, verifyRole.admin, validateRequestId, verifyRequestId, assignRequestStatus.resolve, fetchRequestStatus, RequestController.updateStatus);
 
 export default router;
