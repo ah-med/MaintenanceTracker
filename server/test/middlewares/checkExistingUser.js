@@ -9,7 +9,7 @@ let adminToken;
 
 describe('checkExisting user middleware', () => {
   it('should return error when creating account with existing user details', (done) => {
-    // create an Master admin account
+    // create a Master admin account
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
