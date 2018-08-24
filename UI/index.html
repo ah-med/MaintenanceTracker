@@ -37,55 +37,65 @@
                         and maintenance needs and a maintenance officer can update the status of the request.
                     </p>
                     <p>
-                        An employee creates a request and a maintenance officer responds to the request by updating its status, request can be marked as: approved, rejected or resolved
+                        An employee creates a request and a maintenance officer responds to the request by updating its status, request can be marked
+                        as: approved, rejected or resolved
                     </p>
                 </div>
             </div>
             <div class="form-box">
+                <div id="loader" class="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
                 <form id="login" class="login-form box card hide">
+                    <div id="alert-success" class="alert hidden"></div>
                     <div class="form-item">
                         <label>Email</label>
                         <br>
-                        <input class="form-input" type="email" placeholder="email" required>
+                        <input id="login-email" class="form-input" type="email" placeholder="email" required>
                     </div>
                     <div class="form-item">
                         <label>Password</label>
                         <br>
-                        <input class="form-input" type="password" placeholder="password" required>
+                        <input id="login-password" class="form-input" type="password" placeholder="password" required>
                     </div>
                     <div class="form-item">
-                        <input class="form-btn btn-action" type="submit" value="Login">
+                        <input id="submit-login" class="form-btn btn-action" type="submit" value="Login">
                     </div>
+                    <div id="login-warning" class="alert danger hidden"></div>
                 </form>
                 <form id="signup" class="sigup-form card box hide">
+                    <div id="signup-warning" class="alert danger hidden"></div>
                     <div class="form-item">
-                        <label>Full name</label>
+                        <label>Username</label>
                         <br>
-                        <input class="form-input" type="text" placeholder="full name" required>
+                        <input id="signup-username" class="form-input" type="text" placeholder="username" required>
                     </div>
                     <div class="form-item">
                         <label>Company name</label>
                         <br>
-                        <input class="form-input" type="text" placeholder="company name" required>
+                        <input id="signup-companyname" class="form-input" type="text" placeholder="company name" required>
                     </div>
                     <div class="form-item">
                         <label>Email</label>
                         <br>
-                        <input class="form-input" type="email" placeholder="mail@company.com" required>
+                        <input id="signup-email" class="form-input" type="email" placeholder="mail@company.com" required>
                     </div>
                     <div class="form-item">
                         <label>Password</label>
                         <br>
-                        <input class="form-input" type="password" placeholder="password" required>
+                        <input id="signup-password" class="form-input" type="password" placeholder="password" required>
                     </div>
                     <div class="form-item">
-                        <input class="form-btn btn-action" type="submit" value="Create Account">
+                        <input id="submit-signup" class="form-btn btn-action" type="submit" value="Create Account">
                     </div>
                 </form>
             </div>
         </div>
     </section>
-    <script src="./js/index.js"></script>
+    <script src="../public/js/main.js"></script>
+    <script src="../public/js/index.js"></script>
 </body>
 
 </html>

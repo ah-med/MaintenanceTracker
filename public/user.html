@@ -15,7 +15,7 @@
 <body>
     <div id="newRequestModal" class="modal hide">
         <div>
-            <span class="close" onclick="closeModal('newRequestModal')">&times;</span>
+            <span class="close" onclick="toggleModal('newRequestModal')">&times;</span>
         </div>
         <form id="createRequest" class="card box box-white">
             <div class="form-item">
@@ -70,7 +70,7 @@
         <section class="main box">
             <div class="user-action-box box">
                 <div>
-                    <button id="createAdmin" class="btn-action" onclick="openModal('newRequestModal')">
+                    <button id="createAdmin" class="btn-action" onclick="toggleModal('newRequestModal', 'open')">
                         <i class="fa fa-plus"></i> New Request</button>
                 </div>
                 <div class="search">
@@ -131,9 +131,10 @@
             </div>
         </section>
     </div>
-    <script src="./js/index.js"></script>x  
+    <script src="./js/main.js"></script>
+    <script src="./js/index.js"></script>
     <script src="./js/confirmToken.js"></script>
-    <script src="./js/admin.js"></script>
+    <script src="./js/user.js"></script>
     <script src="./js/fetchRequest.js"></script>
 </body>
 

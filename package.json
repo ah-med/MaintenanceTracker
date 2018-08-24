@@ -4,7 +4,7 @@
   "description": "create and track your maintenance/repair requests",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon server/index.js --exec babel-node",
+    "start": "babel-node server/index.js",
     "test": "set NODE_ENV=test&& npm run migrate && nyc --reporter=html --reporter=text mocha --timeout 10000 --recursive --compilers js:babel-register ./server/test --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "npm run test && nyc report --reporter=text-lcov | coveralls",

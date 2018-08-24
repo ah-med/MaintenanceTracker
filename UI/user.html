@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
+    <title>User</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="./images/fav.ico">
     <link rel="stylesheet" href="./css/main.css">
@@ -15,7 +15,7 @@
 <body>
     <div id="newRequestModal" class="modal hide">
         <div>
-            <span class="close" onclick="closeModal('newRequestModal')">&times;</span>
+            <span class="close" onclick="toggleModal('newRequestModal')">&times;</span>
         </div>
         <form id="createRequest" class="card box box-white">
             <div class="form-item">
@@ -37,7 +37,8 @@
     <!-- Top Navigation -->
     <div class="row top-nav">
         <div class="logo">
-            <span>Maintenance Tracker | Company Name</span>
+            <span>
+                <a href="./index.html">Maintenance Tracker</a> | Company Name</span>
         </div>
         <div class="nav-links">
             <div class="user">
@@ -69,7 +70,7 @@
         <section class="main box">
             <div class="user-action-box box">
                 <div>
-                    <button id="createAdmin" class="btn-action" onclick="openModal('newRequestModal')">
+                    <button id="createAdmin" class="btn-action" onclick="toggleModal('newRequestModal', 'open')">
                         <i class="fa fa-plus"></i> New Request</button>
                 </div>
                 <div class="search">
@@ -98,71 +99,26 @@
                     </button>
                 </div>
                 <div id="all" class="tab-item request-body shadow show">
-                    <table>
-
+                    <table id="request-table">
                         <thead>
                             <tr>
                                 <th class="sn">S/N</th>
                                 <th class="id">Request ID</th>
                                 <th class="title">Title</th>
                                 <th class="des">Description</th>
-                                <th class="stat">status</th>
+                                <th class="stat">Status</th>
                                 <th class="date">CreatedAt</th>
                                 <th class="date">LastUpdate</th>
                                 <th class="act">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>101</td>
-                                <td>My Pc just crashed</td>
-                                <!--  all of a sudden it showed a blank
-                                    blue screen. It has been like this even after several attempt to reboot my laptop. -->
-                                <td>My pc was working fine and all was trail blazing untill ... </td>
-                                <td>accepted</td>
-                                <td>2018-16-05</td>
-                                <td>2018-16-05</td>
-                                <td>
-                                    <a href="">
-                                        <button class="btn-action btn-white edit-btn" onclick=" ">Edit</button>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>284</td>
-                                <td>The AC at reception is faulty</td>
-                                <td>The standing AC at the reception seems not to be working fine. I notice that it only blows
-                                    hot air...</td>
-                                <td>rejected</td>
-                                <td>2018-16-05</td>
-                                <td>2018-16-05</td>
-                                <td>
-                                    <a href="">
-                                        <button class="btn-action btn-white edit-btn" onclick=" ">Edit</button>
-                                    </a>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>284</td>
-                                <td>System repairs</td>
-                                <td>A new request about system that needs quick repair</td>
-                                <td>new</td>
-                                <td>2018-16-05</td>
-                                <td>2018-16-05</td>
-                                <td>
-                                    <a href="">
-                                        <button class="btn-action btn-white edit-btn" onclick=" ">Edit</button>
-                                    </a>
-                                </td>
-
-                            </tr>
-                        </tbody>
                     </table>
-
+                    <div id="loader" class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                    <div id="no-request" class="alert-info"></div>
                 </div>
                 <div id="pend" class="tab-item request-body box hide">
                 </div>
@@ -175,7 +131,9 @@
             </div>
         </section>
     </div>
-    <script src="./js/admin.js"></script>
+    <script src="../public/js/main.js"></script>
+    <script src="../public/js/index.js"></script>
+    <script src="../public/js/user.js"></script>
 </body>
 
 </html>
