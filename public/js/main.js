@@ -23,6 +23,6 @@ function append(parent, el) {
   return parent.appendChild(el);
 }
 
-function insertHTML(id, newHtml) {
+function insertHTML(id, newHTML) {
     document.getElementById(id).innerHTML = newHTML;
 }
