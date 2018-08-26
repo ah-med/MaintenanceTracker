@@ -45,17 +45,7 @@ function updateRequest(userData, token) {
     activateLoader();
 
     // make a fetch to create a new request
-    fetch(updateURL, {
-        method: 'PUT',
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + token,
-        },
-        body: JSON.stringify(userData)
-    })
-        .then(readResponseAsJSON)
-        .then(loadNewRequest)
-        .catch(logError);
+    fetchReq('PUT', updateURL);
 }
 
 function onSubmit(event) {

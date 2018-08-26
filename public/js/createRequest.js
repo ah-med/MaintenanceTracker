@@ -1,4 +1,4 @@
-var eventAction='';
+var eventAction = '';
 
 function activateLoader() {
     displayElement('newReqloader', 'block');
@@ -76,16 +76,10 @@ function loadNewRequest(result) {
     }
 }
 
-function createRequest(userData, token) {
-    // initialize createRequest URL
-    var createReqURL = baseUrl + '/api/v1/users/requests';
-
-    // activate loader with time out
-    activateLoader();
-
+function fetchReq(method, fetchUrl) {
     // make a fetch to create a new request
-    fetch(createReqURL, {
-        method: 'POST',
+    fetch(fetchUrl, {
+        method: method,
         headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + token,
@@ -95,6 +89,17 @@ function createRequest(userData, token) {
         .then(readResponseAsJSON)
         .then(loadNewRequest)
         .catch(logError);
+}
+
+function createRequest(userData, token) {
+    // initialize createRequest URL
+    var createReqURL = baseUrl + '/api/v1/users/requests';
+
+    // activate loader with time out
+    activateLoader();
+
+    // make a fetch to create a new request
+    fetchReq('POST', createReqURL);
 }
 
 function handleSubmitRequest(event) {
