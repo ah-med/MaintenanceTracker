@@ -45,7 +45,6 @@ function displayAlert(element, message) {
         // make the display: none after 5s of fadeout time
         var t = setTimeout(function() {
       		alertElement.classList.add('hidden');
-            console.log(alertElement.classList)
       	}, 3000);
        
        // get the close alert
