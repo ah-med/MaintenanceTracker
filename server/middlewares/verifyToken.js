@@ -17,9 +17,7 @@ const verifyToken = (req, res, next) => {
   jwt.verify(token, secret, (err, userData) => {
     if (err) {
       // Wrong token
-      return res.status(403).json({
-        error: err
-      });
+      return errors.forbidden(res, err.message);
     }
     req.locals = userData;
     next();
