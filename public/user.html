@@ -17,21 +17,26 @@
         <div>
             <span class="close" onclick="toggleModal('newRequestModal')">&times;</span>
         </div>
+        <div id="newReqloader" class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
         <form id="createRequest" class="card box box-white">
             <div class="form-item">
                 <label>Title</label>
                 <br>
-                <input class="form-input" required rows="10"></input>
+                <input id="title-id" class="form-input" type="text" required>
             </div>
             <div class="form-item">
                 <label>Description</label>
                 <br>
-                <textarea class="form-input" required rows="10"></textarea>
+                <textarea id="details-id" class="form-input" required rows="10"></textarea>
             </div>
             <div class="form-item">
-                <input id='submitRequest' onclick="displayAlert('alert-info', 'Request Created Successfully')" class="create-request-btn form-btn btn-action"
-                    type="submit" value="Submit">
+                <input id='submitRequest' class="create-request-btn form-btn btn-action" type="submit" value="Submit">
             </div>
+            <div id="request-error" class="alert danger hidden"></div>
         </form>
     </div>
     <!-- Top Navigation -->
@@ -70,7 +75,7 @@
         <section class="main box">
             <div class="user-action-box box">
                 <div>
-                    <button id="createAdmin" class="btn-action" onclick="toggleModal('newRequestModal', 'open')">
+                    <button id="createAdmin" class="btn-action" onclick="requestAction(event, 'create')">
                         <i class="fa fa-plus"></i> New Request</button>
                 </div>
                 <div class="search">
@@ -112,6 +117,9 @@
                                 <th class="act">Action</th>
                             </tr>
                         </thead>
+                        <tbody id="table-body">
+
+                        </tbody>
                     </table>
                     <div id="loader" class="spinner">
                         <div class="bounce1"></div>
@@ -136,6 +144,8 @@
     <script src="./js/confirmToken.js"></script>
     <script src="./js/user.js"></script>
     <script src="./js/fetchRequest.js"></script>
+    <script src="./js/createRequest.js"></script>
+    <script src="./js/updateRequest.js"></script>
 </body>
 
 </html>
