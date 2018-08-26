@@ -8,8 +8,8 @@ function updateTable(result) {
     // hide loader
     displayElement('loader', 'none')
     var requests = result.data;
-    var table = document.getElementById('request-table');
-    var actionLink = '<a href=""><button class="btn-action btn-white edit-btn" onclick=" ">Edit</button></a>';
+    var table = document.getElementById('table-body');
+    var actionLink = '<button class="btn-action btn-white edit-btn" onclick="requestAction(event, \'update\')">Edit</button>';
 
     if (requests.length === 0) {
         var noRequest = document.getElementById('no-request');
@@ -17,8 +17,7 @@ function updateTable(result) {
         append(noRequest, noRequestText);
         return;
     }
-    console.log(requests);
-    for (var i = 0; i < requests.length; i++) {
+    for (var i = requests.length - 1; i > -1; i--) {
 
         var newRow = table.insertRow(),
             sn = newRow.insertCell(0),
@@ -31,6 +30,7 @@ function updateTable(result) {
             action = newRow.insertCell(7);
 
         var serial = i + 1;
+        serial = (requests.length - serial) + 1
         append(sn, createText(serial));
         append(requestId, createText(requests[i].requestid));
         append(title, createText(requests[i].reqtitle));
@@ -43,13 +43,6 @@ function updateTable(result) {
     }
 }
 
-function logError(error) {
-    console.log('Looks like there was a problem: \n', error);
-}
-
-function readResponseAsJSON(response) {
-    return response.json();
-}
 
 function fetchRequests(pathToResource, token) {
     fetch(pathToResource, {

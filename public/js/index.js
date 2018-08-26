@@ -9,10 +9,3 @@ function toggleForms(id) {
     }
 }
 
-function displayAuthAlert(element, message) {
-    displayElement(element, 'block')
-    insertHTML(element, message);
-}
-
-// const baseUrl='http://localhost:8000';
-const baseUrl='https://mtracka.herokuapp.com';
