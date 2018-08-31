@@ -17,6 +17,8 @@ const router = express.Router();
 // Get all requests in the application
 router.get('/', verifyToken, verifyRole.admin, RequestController.fetchAll);
 
+router.get('/:requestId', verifyToken, verifyRole.admin, validateRequestId, verifyRequestId, RequestController.fetchARequest);
+
 // Approve a request
 router.put('/:requestId/approve', verifyToken, verifyRole.admin, validateRequestId, verifyRequestId, assignRequestStatus.approve, fetchRequestStatus, RequestController.updateStatus);
 
