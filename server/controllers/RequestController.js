@@ -22,6 +22,36 @@ class RequestController {
   }
 
   /**
+  * Fetch a request
+  *@param {object} req The request *.
+  *@param {object} res The response *.
+  *@returns {undefined} returns undefined *
+  */
+  static fetchARequest(req, res) {
+    const { requestId } = req.params;
+    const text = 'select * from requests where requestid=$1';
+    const params = [requestId];
+    db.query(text, params, (err, request) => {
+      if (err) return errors.serverError(res);
+      const {
+        userid, requestid, reqtitle, reqdetails, status, createdat, lastupdated
+      } = request.rows[0];
+      return res.status(200).json({
+        message: 'success',
+        data: {
+          userId: userid,
+          requestId: requestid,
+          title: reqtitle,
+          details: reqdetails,
+          status,
+          createdAt: createdat,
+          lastUpdated: lastupdated
+        }
+      });
+    });
+  }
+
+  /**
   * Update a request
   *@param {object} req The request *.
   *@param {object} res The response *.
@@ -41,7 +71,7 @@ class RequestController {
           message: 'success',
           data: {
             userId: returnData.userid,
-            requesttId: returnData.requestid,
+            requestId: returnData.requestid,
             title: returnData.reqtitle,
             details: returnData.reqdetails,
             status: returnData.status,
@@ -57,7 +87,7 @@ class RequestController {
           message: 'success',
           data: {
             userId: returnData.userid,
-            requesttId: returnData.requestid,
+            requestId: returnData.requestid,
             title: returnData.reqtitle,
             details: returnData.reqdetails,
             status: returnData.status,
