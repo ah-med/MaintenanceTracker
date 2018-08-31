@@ -11,17 +11,6 @@ function displayTabItem(event, item) {
     clickedItem.className = clickedItem.className.replace(" hide", " show");
 }
 
-function toggleModal(id) {
-    // get the modal element by id
-    var modalClassName = document.getElementById(id).className;
-
-    // replace based on status
-    modalClassName = (modalClassName.indexOf('show') === -1) ? modalClassName.replace(" hide", " show") : 
-    modalClassName.replace(" show", " hide");
-
-    document.getElementById(id).className = modalClassName;
-}
-
 function displayAlert(element, message) {
 	  // get the alert element
       var alertElement =  document.getElementById(element);
@@ -58,3 +47,17 @@ function displayAlert(element, message) {
        
 	 });
 }
+
+const requestUrl = baseUrl + '/api/v1/users/requests';
+
+//display loader
+activateLoader('fetchReqLoader', 'req-table')
+fetchRequests(requestUrl, token);
+
+function onSubmit(event) {
+    handleSubmitRequest(event);
+    (eventAction === 'update') ? updateRequest(userData, token) :
+        createRequest(userData, token);
+}
+
+document.getElementById('createRequest').addEventListener('submit', onSubmit);
