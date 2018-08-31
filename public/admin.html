@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./images/fav.ico">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/user.css">
+</head>
+
+<body>
+    <div id="adminModal" class="modal hide">
+        <div>
+            <span class="close" onclick="toggleModal('adminModal')">&times;</span>
+        </div>
+        <form id="signup" class="sigup-form card box box-white">
+            <div class="form-item">
+                <label>Full name</label>
+                <br>
+                <input class="form-input" type="text" placeholder="full name" required>
+            </div>
+            <div class="form-item">
+                <label>Email</label>
+                <br>
+                <input class="form-input" type="email" placeholder="adminMail@company.com" required>
+            </div>
+            <div class="form-item">
+                <label>Password</label>
+                <br>
+                <input class="form-input" type="password" placeholder="password" required>
+            </div>
+            <div class="form-item">
+                <input class="create-request-btn form-btn btn-action" type="submit" value="Create Admin">
+            </div>
+        </form>
+    </div>
+    <div id="employeeModal" class="modal hide">
+        <div>
+            <span class="close" onclick="toggleModal('employeeModal')">&times;</span>
+        </div>
+        <form id="createUser" class="sigup-form card box box-white">
+            <div class="form-item">
+                <label>Full name</label>
+                <br>
+                <input class="form-input" type="text" placeholder="full name" required>
+            </div>
+            <div class="form-item">
+                <label>Email</label>
+                <br>
+                <input class="form-input" type="email" placeholder="userMail@company.com" required>
+            </div>
+            <div class="form-item">
+                <label>Role</label>
+                <br>
+                <input class="form-input" type="text" placeholder="your role in the organisation" required>
+            </div>
+            <div class="form-item">
+                <label>Password</label>
+                <br>
+                <input class="form-input" type="password" placeholder="password" required>
+            </div>
+            <div class="form-item">
+                <input class="create-request-btn form-btn btn-action" type="submit" value="Add employee">
+            </div>
+        </form>
+    </div>
+    <div id="viewRequestModal" class="modal hide">
+        <div>
+            <span class="close" onclick="toggleModal('viewRequestModal')">&times;</span>
+        </div>
+        <form id="createRequest" class="card box box-white">
+            <div class="form-item">
+                <label>Title</label>
+                <br>
+                <input class="form-input" required disabled></input>
+            </div>
+            <div class="form-item">
+                <label>Description</label>
+                <br>
+                <textarea class="form-input" required rows="10" disabled></textarea>
+            </div>
+            <div class="form-item view-request-btn-group">
+                <input class="create-request-btn form-btn btn-action btn-green" type="submit" value="Accept">
+                <input class="create-request-btn form-btn btn-action btn-red" type="submit" value="Reject">
+            </div>
+        </form>
+    </div>
+    <!-- Top Navigation -->
+    <div class="row top-nav">
+            <div class="logo">
+                <span>Maintenance Tracker | Company Name</span>
+            </div>
+            <div class="nav-links">
+                <div class="user">
+                    <img src='./images/male-avarter.png'>
+                    <div class="user-content">
+                        <a href="#">Firstname Lastname</a>
+                        <a href="#">Maintenance</a>
+                        <a href="./index.html">
+                            <i class="fa fa-sign-out"></i> Logout</a>
+                    </div>
+                </div>
+                <div>
+                    <a class="profile" href="./profile.html">Profile</a>
+                </div>
+                <div>
+                    <a href="./admin.html">Home</a>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <!-- main content-->
+        <section class="main box">
+            <div class="user-action-box box">
+                <div>
+                    <button id="createAdmin" class="btn-action btn-white" onclick="toggleModal('adminModal')">
+                        <i class="fa fa-plus"></i> Create Admin</button>
+                    <button class="btn-action" onclick="toggleModal('employeeModal')">
+                        <i class="fa fa-plus"></i> Add employee</button>
+                </div>
+                <div class="search">
+                    <form>
+                        <input class="form-input" type="text" placeholder="filter requests by anything">
+                        <input class="form-btn btn-action" type="submit" value="Filter">
+                    </form>
+                </div>
+            </div>
+            <div class="request-board shadow">
+                <div class="tab">
+                    <button class="btn-action tab-links btn-white active" onclick="displayTabItem(event, 'all')">
+                        <a href="#">All</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'pend')">
+                        <a href="#">New</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'appr')">
+                        <a href="#">Accepted</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'disappr')">
+                        <a href="#">Rejected</a>
+                    </button>
+                    <button class="btn-action tab-links btn-white" onclick="displayTabItem(event, 'resol')">
+                        <a href="#">Resolved</a>
+                    </button>
+                </div>
+                <div id="all" class="tab-item request-body shadow show">
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th class="sn">S/N</th>
+                                <th class="id">Request ID</th>
+                                <th class="title">Title</th>
+                                <th class="des">Description</th>
+                                <th class="stat">status</th>
+                                <th class="date">CreatedAt</th>
+                                <th class="date">LastUpdate</th>
+                                <th class="act">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>101</td>
+                                <td>My Pc just crashed</td>
+                                <!--  all of a sudden it showed a blank
+                                        blue screen. It has been like this even after several attempt to reboot my laptop. -->
+                                <td>My pc was working fine and all was trail blazing untill ... </td>
+                                <td>new</td>
+                                <td>2018-16-05</td>
+                                <td>2018-16-05</td>
+                                <td>
+                                    <button class="btn-action btn-white edit-btn" onclick="toggleModal('viewRequestModal')">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>284</td>
+                                <td>The AC at reception is faulty</td>
+                                <td>The standing AC at the reception seems not to be working fine. I notice that it only blows
+                                    hot air...</td>
+                                <td>accepted</td>
+                                <td>2018-16-05</td>
+                                <td>2018-16-05</td>
+                                <td>
+                                    <button class="btn-action btn-white edit-btn" onclick="toggleModal('viewRequestModal')">View</button>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>284</td>
+                                <td>System repairs</td>
+                                <td>A new request about system that needs quick repair</td>
+                                <td>rejected</td>
+                                <td>2018-16-05</td>
+                                <td>2018-16-05</td>
+                                <td>
+                                    <button class="btn-action btn-white edit-btn" onclick="toggleModal('viewRequestModal')">View</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div id="pend" class="tab-item request-body box hide">
+                </div>
+                <div id="appr" class="tab-item request-body box hide">
+                </div>
+                <div id="disappr" class="tab-item request-body box hide">
+                </div>
+                <div id="resol" class="tab-item request-body box hide">
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="./js/admin.js"></script>
+</body>
+
+</html>

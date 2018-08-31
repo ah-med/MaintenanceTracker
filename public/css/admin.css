@@ -7,6 +7,10 @@ body {
     color: #fff;
 }
 
+#fetchReqLoader .loader-text {
+    color: rgba(0, 0, 0, 0.3);
+}
+
 .box {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 0 30px 30px 30px;
@@ -97,6 +101,9 @@ body {
 }
 .search form .form-input {
     width: 80%;
+}
+.form-radio {
+    margin-right: 20px;
 }
 /* requests */
 .request {

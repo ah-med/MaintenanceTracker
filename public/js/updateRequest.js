@@ -42,16 +42,10 @@ function updateRequest(userData, token) {
     // initialize updateRequest URL
     var updateURL = baseUrl + '/api/v1/users/requests/' + info.clickId;
     // activalte loader with time out
-    activateLoader();
+    activateLoader('newReqloader', 'createRequest');
 
     // make a fetch to create a new request
     fetchReq('PUT', updateURL);
 }
 
-function onSubmit(event) {
-    handleSubmitRequest(event);
-    (eventAction === 'update') ? updateRequest(userData, token) :
-        createRequest(userData, token);
-}
 
-document.getElementById('createRequest').addEventListener('submit', onSubmit);

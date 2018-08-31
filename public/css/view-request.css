@@ -1,0 +1,41 @@
+#fetch-error {
+    padding: 10px;
+    color: white;
+}
+.view-req {
+    margin: 10px auto;
+    width: 800px;
+}
+.back-link {
+    color:#35475E;
+    margin: 10px auto;
+  }
+
+.view-request-btn-group{
+    margin-top: 20px;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    color: #000000;
+}
+tr {
+      cursor: pointer;
+      height: 60px;
+}
+
+tr:nth-of-type(odd) {
+    background: #eee;
+    font-size: 14px;
+}
+  
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 14px;
+}
+td:first-child {
+    width: 30%;
+}

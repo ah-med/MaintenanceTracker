@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>View</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./images/fav.ico">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/view-request.css">
+</head>
+
+<body>
+    <!-- Top Navigation -->
+    <div class="row top-nav">
+        <div class="logo">
+            <span>Maintenance Tracker | Company Name</span>
+        </div>
+        <div class="nav-links">
+            <div class="user">
+                <img src='./images/male-avarter.png'>
+                <div class="user-content">
+                    <a href="#">Firstname Lastname</a>
+                    <a href="#">Maintenance</a>
+                    <a href="./index.html">
+                        <i class="fa fa-sign-out"></i> Logout</a>
+                </div>
+            </div>
+            <div>
+                <a class="profile" href="./profile.html">Profile</a>
+            </div>
+            <div>
+                <a href="./admin.html">Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="row view-req">
+        <div class="back-link" align="center">
+            <h2>Request Details</h2>
+            <a href="./master_admin.html">Back to request log</a>
+            <div id="fetchReqLoader" class="spinner">
+                <span class="loader-text">Loading Request</span>
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+            <div id="fetch-error" class="alert-info hide"></div>
+        </div>
+        <div id="request-table" class="request-table">
+            <table id="req-table" class="shadow">
+                <tbody id="table-body">
+                </tbody>
+            </table>
+            <div class="view-request-btn-group">
+                <button id="accept" class="create-request-btn form-btn btn-action btn-green hide" onclick="modifyStatus('approve')">Accept</button>
+                <button id="reject" class="create-request-btn form-btn btn-action btn-red hide" onclick="modifyStatus('disapprove')">Reject</button>
+                <button id="resolve" class="create-request-btn form-btn btn-action btn-green hide" onclick="modifyStatus('resolve')">Resolve</button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/confirmToken.js"></script>
+    <script src="./js/fetchARequests.js"></script>
+    <script src="./js/modifyRequestStatus.js"></script>    
+    <script src="./js/viewRequest.js"></script>
+</body>
+</html>

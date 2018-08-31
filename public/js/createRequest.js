@@ -1,18 +1,5 @@
 var eventAction = '';
 
-function activateLoader() {
-    displayElement('newReqloader', 'block');
-    displayElement('createRequest', 'none');
-    setTimeout(function () {
-        displayElement('newReqloader', 'none');
-        displayElement('createRequest', 'block');
-    }, 15000)
-}
-
-function reDirect(url) {
-    window.location.href = (url);
-}
-
 function handleServerError(error) {
     // get the error status
     var status = error.status;
@@ -31,27 +18,6 @@ function handleServerError(error) {
     }
 }
 
-function envelopToArray(data) {
-    var newData = {
-        data: [{
-            userid: data.userId,
-            requestid: data.requestId,
-            reqtitle: data.title,
-            reqdetails: data.details,
-            createdat: data.createdAt,
-            lastupdated: data.createdAt
-        }]
-    }
-
-    return newData;
-}
-
-function stopRequestLoader() {
-    // display form and hide loader
-    displayElement('newReqloader', 'none');
-    displayElement('createRequest', 'block');
-}
-
 function displaySuccessAlert(result) {
     // close modal
     toggleModal('newRequestModal')
@@ -66,7 +32,7 @@ function reloadRequestTable() {
 }
 
 function loadNewRequest(result) {
-    stopRequestLoader();
+    stopRequestLoader('newReqloader', 'createRequest');
     // if result contains error 
     if (result.error) {
         handleServerError(result.error);
@@ -77,7 +43,6 @@ function loadNewRequest(result) {
 }
 
 function fetchReq(method, fetchUrl) {
-    // make a fetch to create a new request
     fetch(fetchUrl, {
         method: method,
         headers: {
@@ -96,7 +61,7 @@ function createRequest(userData, token) {
     var createReqURL = baseUrl + '/api/v1/users/requests';
 
     // activate loader with time out
-    activateLoader();
+    activateLoader('newReqloader', 'createRequest');
 
     // make a fetch to create a new request
     fetchReq('POST', createReqURL);
