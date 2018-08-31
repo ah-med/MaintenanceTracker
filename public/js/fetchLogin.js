@@ -1,4 +1,3 @@
-// const loginUrl = 'https://mtracka.herokuapp.com/api/v1/auth/login';
 const loginUrl = baseUrl + '/api/v1/auth/login';
 
 
@@ -30,7 +29,8 @@ const login = (event) => {
                 // then use the role to load the necessary page 
                 localStorage.setItem('userToken', obj.data.token); 
                 localStorage.setItem('login', true);
-                window.location.href = ('./user.html');
+                localStorage.setItem('role', obj.data.role);
+                reDirectLogin(obj.data.role);
             } else {
                 // get status 
                 var status = obj.error.status;
