@@ -1,7 +1,10 @@
+function loadAllRequests() {
+   var path = baseUrl + '/api/v1/requests';
+   // activate loader
+   activateLoader('fetchReqLoader', 'req-table')
 
+   fetchAllRequests(path, token);
 
-// var submitRequest = document.getElementById('createRequest');
+}
 
-// submitRequest.addEventListener('click', displayAlert('alert-success', 'Request Created Successfully'));
-
-
+loadAllRequests();
