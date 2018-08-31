@@ -11,6 +11,20 @@ function toggleDisplay(id) {
     }
 }
 
+function activateLoader(loaderId, contentId) {
+    displayElement(loaderId, 'block');
+    displayElement(contentId, 'none');
+    setTimeout(function () {
+        displayElement(loaderId, 'none');
+        displayElement(contentId, 'block');
+    }, 15000)
+}
+
+function stopRequestLoader(loaderId, contentId) {
+    displayElement(loaderId, 'none');
+    displayElement(contentId, 'block');
+}
+
 function createNode(element) {
     return document.createElement(element);
 }
@@ -35,8 +49,12 @@ function readResponseAsJSON(response) {
     return response.json();
 }
 
+function reDirect(url) {
+    window.location.href = (url);
+}
+
 function displayAuthAlert(element, message) {
-    displayElement(element, 'block')
+    displayElement(element, 'block');
     insertHTML(element, message);
 }
 
